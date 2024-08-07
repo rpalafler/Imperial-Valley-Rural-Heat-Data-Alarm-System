@@ -1,0 +1,258 @@
+.sidebarNew {
+    display: flex ;  /* flex */
+    flex-direction: row ;
+    position: fixed ;
+    top: 10.67rem ;
+    z-index: 10000 !important ;
+
+    width: 21rem ;
+    height: auto ;  /* Must specify "height: auto" for scrollbar to appear */
+
+    justify-content: left ;
+
+    left: -200% ;
+    right: 0 ;
+    bottom: 0 ;
+
+    background-color: rgba(255, 255, 255, 1.0) ;
+    padding: 0.1rem ;
+    padding-left: 0rem ;
+    padding-right: 0.2rem ;
+
+    transition: left 0.37s ;
+
+    overflow-y: auto ;
+    overflow-x: hidden ;
+}.active {
+    left: 0 ;
+
+    border-right: 0.01rem solid rgba(0, 0, 140, 0.1777) ;
+
+    overflow-y: auto ;
+    overflow-x: hidden ;
+}
+
+.sidebarNew nav {
+    width: 100% ;
+    padding: 1.1rem ;
+    padding-right: 0.2rem ;
+    text-decoration: none ;
+}
+
+.sidebarNew nav ul {
+    list-style-type: none ;
+    text-decoration: none ;
+    padding-left: 0rem ;
+    padding-bottom: 1rem ;
+}
+
+.sidebarNew nav ul li {
+    text-align: left ;
+    text-decoration: none ;
+    justify-content: center ;
+    font-size: 1.25rem ;
+    font-weight: 600 ;
+    letter-spacing: 0.075rem ;
+    color: rgba(0, 0, 90, 1.0) ;
+
+    border-bottom: 0.05rem solid rgba(0, 0, 150, 0.4) ;
+
+    padding-bottom: 1.5rem ;
+    padding-top: 1.5rem ;
+
+    padding-left: 0.3rem ;
+    margin-left: 0.1rem ;
+}
+.sidebarNew nav ul li:hover {
+    background-color: rgba(245, 245, 245, 0.7777) ;
+    cursor: pointer ;
+}
+
+.sidebarLabel {
+    font-size: 1.3rem ;
+    font-weight: 450 ;
+    color: rgba(0, 0, 0, 1) ;
+    margin-top: 0.9rem ;
+    margin-left: 0.2rem ;
+}
+
+.menuIcon {
+    color: rgba(0, 0, 140, 1.0) ;
+    font-size: 2.75rem ;
+    margin-right: 0.55rem ;
+    margin-top: 0.2rem ;
+}
+
+.tabMenu {
+    display: flex ;  /* flex */
+    flex-direction: row ;
+    position: fixed ;
+    top: 9.784rem ;
+    z-index: 9999 !important ;
+
+    width: 33rem ;
+    height: auto ;  /* Must specify "height: auto" for scrollbar to appear */
+
+    justify-content: left ;
+
+    left: -150% ;
+    right: 0 ;
+    bottom: 0 ;
+
+    background-color: rgba(255, 255, 255, 1.0) ;
+    padding: 1.5rem ;
+    padding-left: 0.5rem ;
+    padding-right: 0.5rem ;
+    padding-top: 1.6rem ;
+
+    overflow-y: auto ;
+    overflow-x: hidden ;
+
+    transition: 0.6s left ease-out ;
+}.tabActive{
+    left: 22rem ;
+}
+.tabContent{
+    display: flex !important ;
+    flex-direction: column !important ;
+    padding: 0.05rem !important ;
+}
+.tabHeader {
+    display: flex !important ;
+    flex-direction: row !important ;
+    justify-content: space-between !important ;
+    gap: 2.5rem !important ;
+
+    margin-bottom: 1rem ;
+}
+.tabExit {
+    margin-top: -1.07rem !important ;
+}
+.tabExit:hover {
+    color: rgba(0, 0, 240, 0.99) ;
+    cursor: pointer ;
+}
+
+.dataOptionsContainer {
+    display: flex ;
+    display: none ;
+    position: fixed ;
+    justify-content: center ;
+    align-items: center ;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100000 !important ;
+}
+.dataOptionsTab {
+    position: relative ;
+    width: 40rem ;
+    height: 35rem ;
+    background-color: rgba(255, 255, 255, 1) ;
+}
+
+@media screen and (max-width: 1550px){
+    .sidebarNew {
+        width: 20rem ;
+        padding-left: 0rem ;
+        padding-right: 0.7rem ;
+    }
+    .sidebarNew nav ul li {
+        font-size: 1.25rem ;
+    }
+
+    .tabActive {
+        left: 20rem ;
+        width: 30rem ;
+    }
+
+}
+
+@media screen and (max-width: 1025px){
+    .sidebarNew {
+        width: 18.5rem ;
+        padding-left: 0.3rem ;
+        padding-right: 0.3rem ;
+    }
+    .tabActive {
+        left: 18.5rem ;
+    }
+
+    .menuIcon {
+        font-size: 2.2rem ;
+        margin-right: 0.3rem ;
+        margin-top: 0.6rem ;
+    }
+    .sidebarLabel {
+        font-size: 1.2rem ;
+    }
+
+    .subSelectionMenu {
+        font-size: 1.05rem !important ;
+        margin-left: 1rem !important ;
+        letter-spacing: 0.05rem !important ;
+    }
+
+}
+
+@media screen and (max-width: 769px){
+    .sidebarNew {
+        width: 15.15rem ;
+        padding-left: 0rem ;
+        padding-right: 0.6rem ;
+    }
+    .sidebarNew nav ul li {
+        padding-bottom: 1.2rem ;
+        padding-top: 1.2rem ;
+        letter-spacing: 0.04rem ;
+
+        font-size: 1.10rem ;
+    }
+    .menuIcon {
+        font-size: 2rem ;
+        margin-right: 0.3rem ;
+    }
+    .sidebarLabel {
+        font-size: 1.0rem ;
+    }
+
+    .subSelectionMenu {
+        font-size: 1.0rem !important ;
+        margin-left: 1.25rem !important ;
+        letter-spacing: 0.05rem !important ;
+    }
+
+    .tabActive {
+        left: 15.15rem ;
+    }
+
+}
+
+@media screen and (max-width: 480px){
+    .sidebarNew {
+        width: 100% ;
+        justify-content: center ;
+        padding-left: 0.5rem ;
+        padding-right: 1.5rem ;
+    }
+    .sidebarNew nav ul li {
+        text-align: left ;
+        padding-bottom: 1.2rem ;
+        padding-top: 1.2rem ;
+    }
+    
+    .tabActive {
+        width: 100% ;
+        left: 0 ;
+
+        z-index: 10001 !important ;
+    }
+}
+
+@media screen and (max-width: 340px){
+    .sidebarNew nav ul li {
+        padding-bottom: 0.8rem ;
+        padding-top: 0.8rem ;
+    }
+}

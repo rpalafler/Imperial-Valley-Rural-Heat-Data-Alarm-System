@@ -1,0 +1,13 @@
+.main {
+    display: flex ;
+    flex-direction: row ;
+    position: fixed ;
+    
+    width: 100% !important ;
+    height: 100% !important ;
+    height: 100% ;
+    margin-top: 0rem ;
+
+    background-color: rgba(0, 0, 0, 1) ;
+    overflow: hidden ;
+}
