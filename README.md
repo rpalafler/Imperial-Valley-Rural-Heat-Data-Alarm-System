@@ -31,3 +31,4 @@ In an academic-business collaboration between Premier Analytics Consulting and S
 | **Riley Rutan** | San Diego State University | Big Data Analytics MS | 2024 | rrutan2426@sdsu.edu | www.LinkedIn.com/in/Riley-Rutan-2a5ba5178 |
 | **Miguel Angel Bravo** | San Diego State University | Big Data Analytics MS | 2024 | mbravomartinez0754@sdsu.edu | www.LinkedIn.com/in/Miguel-Angel-Bravo/ |
 | **Michael Albo** | San Diego State University | Big Data Analytics MS | 2024 | malbo1974@sdsu.edu | www.LinkedIn.com/in/Michael-Albo-55b74b196 |
+| **Ethan Nyi Nyi** | San Diego State University | Big Data Analytics MS | 2024 | enyinyi2187@sdsu.edu | https://www.linkedin.com/in/nyi-nyi/ |
