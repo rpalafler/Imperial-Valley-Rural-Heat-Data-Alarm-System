@@ -1,5 +1,16 @@
+// --------------------------------------------------------------------------------------- //
+//  DeckGL 3D-Environment Component with Layer Overlays for MainApp DeckInterface          //
+// ~ 3D-Environment for Imperial Valley with Viewing Optimizations ~                       //
+// --------------------------------------------------------------------------------------- //
+//  Ryan Paul Lafler, M.Sc.                                                                //
+//  Copyright 2024 by Ryan Paul Lafler and Premier Analytics Consulting, LLC.              //
+//  E-mail: rplafler@premier-analytics.com                                                 //
+// --------------------------------------------------------------------------------------- //
+
+// Import React Hooks
 import { useState, useEffect, useContext } from 'react' ;
 
+// CSS Stylesheet for Component
 import styles from './Env3D.module.css' ;
 
 // DeckGL Layer Components
@@ -20,6 +31,7 @@ import { setParameters, withParameters, Geometry } from '@luma.gl/core';
 
 
 
+/* Limit Active Viewport to a Bounding Box Determined by Zoom Level and Total Square Miles */
 const MILES_TO_DEGREES_LAT = 1 / 69; // Approximate conversion for latitude
 const MILES_TO_DEGREES_LNG = 1 / 54.6; // Approximate conversion for longitude at mid-latitude
 

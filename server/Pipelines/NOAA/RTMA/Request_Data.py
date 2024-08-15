@@ -1,11 +1,11 @@
-## ---------------------------------------------------------------------------------- ##
-##  NOAA's Real-Time Mesoscale Analysis (RTMA) Data Pipeline                          ##
-## ~ Ensuring Data Structures for FastAPI with Pydantic ~                             ##
-## ---------------------------------------------------------------------------------- ##
-##  Ryan Paul Lafler, M.Sc.                                                           ##
-##  Copyright 2024 by Ryan Paul Lafler and Premier Analytics Consulting, LLC.         ##
-##  E-mail: rplafler@premier-analytics.com                                            ##
-## ---------------------------------------------------------------------------------- ##
+## --------------------------------------------------------------------------------------- ##
+##  NOAA's Real-Time Mesoscale Analysis (RTMA) Data Pipeline                               ##
+## ~ Ensuring Data Structures for FastAPI with Pydantic ~                                  ##
+## --------------------------------------------------------------------------------------- ##
+##  Ryan Paul Lafler, M.Sc.                                                                ##
+##  Copyright 2024 by Ryan Paul Lafler and Premier Analytics Consulting, LLC.              ##
+##  E-mail: rplafler@premier-analytics.com                                                 ##
+## --------------------------------------------------------------------------------------- ##
 
 
 ## --------------------------------------------------------------- ##

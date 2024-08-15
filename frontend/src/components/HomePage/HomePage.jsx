@@ -1,4 +1,16 @@
+// --------------------------------------------------------------------------------------- //
+//  Homepage (Front Page) Component                                                        //
+// ~ Contains Navigation Menu, Information about Project, and Links to other Pages ~       //
+// --------------------------------------------------------------------------------------- //
+//  Ryan Paul Lafler, M.Sc.                                                                //
+//  Copyright 2024 by Ryan Paul Lafler and Premier Analytics Consulting, LLC.              //
+//  E-mail: rplafler@premier-analytics.com                                                 //
+// --------------------------------------------------------------------------------------- //
+
+// React Hook Imports
 import { useState, useEffect } from "react" ;
+
+// React-Router Navigation Links
 import { NavLink } from "react-router-dom" ;
 
 import styles from "./HomePage.module.css" ;

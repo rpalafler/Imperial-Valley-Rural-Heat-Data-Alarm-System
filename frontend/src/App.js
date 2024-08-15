@@ -1,3 +1,11 @@
+// --------------------------------------------------------------------------------------- //
+//  Frontend App URL Routing and Paths                                                     //
+// ~ Using React-Router to Create a Multipage Application ~                                //
+// --------------------------------------------------------------------------------------- //
+//  Ryan Paul Lafler, M.Sc.                                                                //
+//  Copyright 2024 by Ryan Paul Lafler and Premier Analytics Consulting, LLC.              //
+//  E-mail: rplafler@premier-analytics.com                                                 //
+// --------------------------------------------------------------------------------------- //
 
 // React-Router
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom" ;

@@ -1,10 +1,11 @@
-## ---------------------------------------------------------------------------------- ##
-##  NOAA's Real-Time Mesoscale Analysis (RTMA) Data Pipeline                          ##
-## ---------------------------------------------------------------------------------- ##
-##  Ryan Paul Lafler, M.Sc.                                                           ##
-##  Copyright 2024 by Ryan Paul Lafler and Premier Analytics Consulting, LLC.         ##
-##  E-mail: rplafler@premier-analytics.com                                            ##
-## ---------------------------------------------------------------------------------- ##
+## --------------------------------------------------------------------------------------- ##
+##  NOAA's Real-Time Mesoscale Analysis (RTMA) Data Pipeline                               ##
+## ~ Pipeline Class, Methods, and JSON-Compatible Encoding ~                               ##
+## --------------------------------------------------------------------------------------- ##
+##  Ryan Paul Lafler, M.Sc.                                                                ##
+##  Copyright 2024 by Ryan Paul Lafler and Premier Analytics Consulting, LLC.              ##
+##  E-mail: rplafler@premier-analytics.com                                                 ##
+## --------------------------------------------------------------------------------------- ##
 
 
 ## --------------------------------------------------------------- ##

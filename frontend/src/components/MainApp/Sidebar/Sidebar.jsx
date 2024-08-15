@@ -1,3 +1,13 @@
+// --------------------------------------------------------------------------------------- //
+//  Navigation Menu Sidebar for MainApp Component                                          //
+// ~ Popup Sidebar for Changing, Adding, Hiding, and Confguring Data / Settings ~          //
+// --------------------------------------------------------------------------------------- //
+//  Ryan Paul Lafler, M.Sc.                                                                //
+//  Copyright 2024 by Ryan Paul Lafler and Premier Analytics Consulting, LLC.              //
+//  E-mail: rplafler@premier-analytics.com                                                 //
+// --------------------------------------------------------------------------------------- //
+
+// Import React Hooks
 import { useState, useEffect, useContext } from 'react' ;
 
 // CSS Stylesheet for Sidebar Menu

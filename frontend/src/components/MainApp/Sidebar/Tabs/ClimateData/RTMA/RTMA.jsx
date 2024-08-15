@@ -1,3 +1,13 @@
+// --------------------------------------------------------------------------------------- //
+//  NOAA's RTMA Data User Querying and Customization Options                               //
+// ~ Options for Querying, Visualizing, and Displaying RTMA Data  ~                        //
+// --------------------------------------------------------------------------------------- //
+//  Ryan Paul Lafler, M.Sc.                                                                //
+//  Copyright 2024 by Ryan Paul Lafler and Premier Analytics Consulting, LLC.              //
+//  E-mail: rplafler@premier-analytics.com                                                 //
+// --------------------------------------------------------------------------------------- //
+
+// Import React Hooks
 import { useState, useEffect, useContext } from 'react' ;
 
 // CSS Stylesheet
@@ -8,7 +18,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // React-Bootstrap
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 import Spinner from 'react-bootstrap/Spinner';
-
 
 // Import Context
 import { RTMAContext } from '../../../../MainApp' ;

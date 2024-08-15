@@ -1,3 +1,13 @@
+// --------------------------------------------------------------------------------------- //
+//  Climate Data Menu Selection Component                                                  //
+// ~ Options for Selecting and Customizing Climate Datasets ~                              //
+// --------------------------------------------------------------------------------------- //
+//  Ryan Paul Lafler, M.Sc.                                                                //
+//  Copyright 2024 by Ryan Paul Lafler and Premier Analytics Consulting, LLC.              //
+//  E-mail: rplafler@premier-analytics.com                                                 //
+// --------------------------------------------------------------------------------------- //
+
+// Import React Hooks
 import { useState, useEffect, useContext } from 'react' ;
 
 // React-Bootstrap Components

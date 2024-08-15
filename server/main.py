@@ -1,10 +1,12 @@
-## ############################################################################# ##
-##           Python FastAPI Server, Pathways, Requests, and Responses            ##
-##                    Developed by Ryan Paul Lafler, M.Sc.                       ##
-##                     Premier Analytics Consulting, LLC                         ##
-##                      rplafler@premier-analytics.com                           ##
-##   Copyright 2024 by Ryan Paul Lafler and Premier Analytics Consulting, LLC.   ##
-## ############################################################################# ##
+## --------------------------------------------------------------------------------------- ##
+##  REST Application: Python FastAPI Server, Pathways, Requests, and Responses             ##
+## ~ FastAPI, Uvicorn, JSON-Encoding, Pipelines, and URL Pathways ~                        ##
+## --------------------------------------------------------------------------------------- ##
+##  Ryan Paul Lafler, M.Sc.                                                                ##
+##  Copyright 2024 by Ryan Paul Lafler and Premier Analytics Consulting, LLC.              ##
+##  E-mail: rplafler@premier-analytics.com                                                 ##
+## --------------------------------------------------------------------------------------- ##
+
 
 # SUDO ID Issue with WSL ?
 #Open Windows Command Prompt
@@ -19,6 +21,7 @@
 ### apt-get -o Dpkg::Options::="--force-confmiss" install --reinstall sudo
 ### sudo --version
 ### sudo -h
+
 
 # ---------------------------------------------- #
 #                 Library Imports                #

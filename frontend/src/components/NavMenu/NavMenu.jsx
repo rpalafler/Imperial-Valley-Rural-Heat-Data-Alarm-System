@@ -1,6 +1,19 @@
+// --------------------------------------------------------------------------------------- //
+//  Horizontal App Navigation Menu Component                                               //
+// ~ Contains Logo, Links to Seperate Web Pages, App Link Directory ~                      //
+// --------------------------------------------------------------------------------------- //
+//  Ryan Paul Lafler, M.Sc.                                                                //
+//  Copyright 2024 by Ryan Paul Lafler and Premier Analytics Consulting, LLC.              //
+//  E-mail: rplafler@premier-analytics.com                                                 //
+// --------------------------------------------------------------------------------------- //
+
+// Import React Hooks
 import { useState, useEffect } from "react" ;
+
+// Import CSS Stylesheet for Component
 import styles from "./NavMenu.module.css" ;
 
+// Import NavLinks from React-Router
 import { NavLink } from "react-router-dom" ;
 
 // React Icons for Menu Items

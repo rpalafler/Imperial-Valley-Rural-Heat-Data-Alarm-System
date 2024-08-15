@@ -1,9 +1,20 @@
+// --------------------------------------------------------------------------------------- //
+//  SubHeader for MainApp Component                                                        //
+// ~ Parent Component for the Navigation Sidebar ~                                         //
+// --------------------------------------------------------------------------------------- //
+//  Ryan Paul Lafler, M.Sc.                                                                //
+//  Copyright 2024 by Ryan Paul Lafler and Premier Analytics Consulting, LLC.              //
+//  E-mail: rplafler@premier-analytics.com                                                 //
+// --------------------------------------------------------------------------------------- //
+
+// Import React Hooks
 import react, { useState, useEffect, useContext } from "react" ;
 
 // React-Icons
 import { IoLogoGameControllerB } from "react-icons/io";
 import { TiThMenu } from "react-icons/ti";
 import { IoIosArrowForward } from "react-icons/io";
+
 // Dropdown Menu Button
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';

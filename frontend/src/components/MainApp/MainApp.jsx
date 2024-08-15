@@ -1,3 +1,13 @@
+// --------------------------------------------------------------------------------------- //
+//  Main Interactive Dashboard Interface                                                   //
+// ~ Contains NavMenu, SubHeader, DeckGL Interface, Pullup Tab Components ~                //
+// --------------------------------------------------------------------------------------- //
+//  Ryan Paul Lafler, M.Sc.                                                                //
+//  Copyright 2024 by Ryan Paul Lafler and Premier Analytics Consulting, LLC.              //
+//  E-mail: rplafler@premier-analytics.com                                                 //
+// --------------------------------------------------------------------------------------- //
+
+// Import React Hooks
 import { useState, useEffect, createContext } from 'react' ;
 
 // App Component Imports
