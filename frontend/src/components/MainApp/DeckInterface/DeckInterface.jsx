@@ -1,19 +1,26 @@
-import { useState, useEffect, useContext } from 'react' ;
+import { useState } from 'react';
+import styles from './DeckInterface.module.css';
 
-// CSS Stylesheet for Deckgl Interface
-import styles from './DeckInterface.module.css' ;
-
-import { default as Env3D } from './Env3D/Env3D' ;
+import Env3D from './Env3D/Env3D';
+import MapComponent from './Env2D/map.js';
 
 function DeckInterface() {
+    const [show3D, setShow3D] = useState(true);
 
-    return(
+    const toggleView = () => {
+        setShow3D(prevShow3D => !prevShow3D);
+    };
+
+    return (
         <>
-        <div className={styles.main}>
-            <Env3D />
-        </div>
+            <button onClick={toggleView}>
+                {show3D ? 'Switch to 2D View' : 'Switch to 3D View'}
+            </button>
+            <div className={styles.main}>
+                {show3D ? <Env3D /> : <MapComponent />}
+            </div>
         </>
-    ) ;
+    );
 }
 
-export default DeckInterface ;
+export default DeckInterface;

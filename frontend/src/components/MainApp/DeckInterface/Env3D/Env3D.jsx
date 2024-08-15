@@ -8,6 +8,13 @@ import { MapView } from '@deck.gl/core' ;
 import { Tile3DLayer, TerrainLayer } from "@deck.gl/geo-layers" ;
 import {_TerrainExtension as TerrainExtension, CollisionFilterExtension} from '@deck.gl/extensions';
 
+import { GeoJsonLayer, BitmapLayer } from 'deck.gl';
+import Popup from "../Env2D/popup";
+
+
+
+import center_data from '../../Rileys_Data/cool_centers.geojson';
+
 function Env3D() {
 
     const [satelliteTileLayer, setSatelliteTileLayer] = useState(null) ;
@@ -22,6 +29,10 @@ function Env3D() {
     const [tileLayer, setTileLayer] = useState(sessionStorage.getItem("basemap")) ;
 
     const boundingBox = [-118.5, 32, -114.8, 35];
+
+    const [popup, setPopup] = useState(null);
+
+    const imageUrl = '/local_raster2.png';
 
     const onViewStateChange = ({ viewState }) => {
         setZoomLevel(viewState.zoom) ;
@@ -52,13 +63,52 @@ function Env3D() {
         material: true,
         meshMaxError: 3,
         //modelMatrix: new Matrix4().translate([0, 0, -100]),
-        operation: 'terrain+draw',
+        //operation: 'terrain+draw',
         maxZoom: 13,
         parameters: {
             depthTest: true,
             cull: true,
         },
     }) ;
+
+    const bitmapLayer = new BitmapLayer({
+        id: 'bitmap-layer',
+        image: imageUrl, 
+        bounds: [
+            -116.83160400390625, 32.49019241333008, -114.98406982421875,
+            34.11175537109375,
+          ],
+        opacity: 0.5,
+        parameters: {
+            depthTest: false, // Disable depth test to prevent the bitmap from being covered
+        },
+        
+        
+    });
+
+    const geoJsonLayer = new GeoJsonLayer({
+        id: 'geojson-layer',
+        data: center_data,
+        filled: true,
+        pointRadiusMinPixels: 7,
+        pointRadiusScale: 30,
+        getPointRadius: f => 7,
+        getElevation: f => 10000,  // Increase elevation if necessary
+        getFillColor: [0, 140, 255],
+        pickable: true,
+        parameters: {
+            depthTest: false,  // Disable depth test for this layer
+        },
+        onHover: (info) => {
+            if (info.picked) {
+              const { x, y } = info;
+              setPopup({ position: { x, y }, info: info.object });
+            } else {
+              setPopup(null);
+            }
+          },
+        
+    });
 
 
     return(
@@ -69,6 +119,8 @@ function Env3D() {
             })}
             layers={[
                 elevationLayer,
+                geoJsonLayer,
+                bitmapLayer,
             ]}
             initialViewState={viewState}
             onViewStateChange={onViewStateChange}
@@ -77,6 +129,7 @@ function Env3D() {
                 clearColor: [0, 0, 0, 255],
             }}
         />
+        <Popup position={popup?.position} info={popup?.info} />
         </>
     ) ;
 }
