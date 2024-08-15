@@ -16,15 +16,15 @@ import { FaMountainSun } from "react-icons/fa6";
 
 const menuArray = [
     {value: 0, name: "Home", 
-        icon:<TbHomeHand style={{color: "rgba(255, 255, 255, 1.0)", fontSize: "2.1rem", marginRight: "0.3rem", marginTop: "-0.8rem", marginBottom: '-0.2rem'}}/>, url: "/"},
+        icon:<TbHomeHand style={{color: "rgba(255, 255, 255, 1.0)", fontSize: "2.1rem", marginRight: "0.7rem", marginTop: "-0.8rem", marginBottom: '-0.2rem'}}/>, url: "/"},
     {value: 1, name: "App", 
-        icon:<FaMountainSun style={{color: "rgba(255, 255, 255, 1.0)", fontSize: "2.1rem", marginRight: "0.3rem", marginTop: "-2.5rem", marginBottom: '-0.2rem'}}/>, url: "/app"},
+        icon:<FaMountainSun style={{color: "rgba(255, 255, 255, 1.0)", fontSize: "2.2rem", marginRight: "0.7rem", marginTop: "-0.8rem", marginBottom: '-0.2rem'}}/>, url: "/app"},
     {value: 2, name: "Mission", 
-        icon:<MdOutlineConnectWithoutContact style={{color: "rgba(255, 255, 255, 1.0)", fontSize: "1.9rem", marginRight: "0.3rem", marginTop: "-0.8rem", marginBottom: '-0.2rem'}}/>, url: "/mission"},
+        icon:<MdOutlineConnectWithoutContact style={{color: "rgba(255, 255, 255, 1.0)", fontSize: "2.1rem", marginRight: "0.7rem", marginTop: "-0.8rem", marginBottom: '-0.2rem'}}/>, url: "/mission"},
     {value: 3, name: "About", 
-        icon:<GrCircleInformation style={{color: "rgba(255, 255, 255, 1.0)", fontSize: "2.1rem", marginRight: "0.3rem", marginTop: "-0.8rem", marginBottom: '-0.2rem'}}/>, url: "/about"},
+        icon:<GrCircleInformation style={{color: "rgba(255, 255, 255, 1.0)", fontSize: "2.1rem", marginRight: "0.7rem", marginTop: "-0.8rem", marginBottom: '-0.2rem'}}/>, url: "/about"},
     {value: 4, name: "Tutorials", 
-        icon: <MdOutlineCastForEducation style={{color: "rgba(255, 255, 255, 1.0)", fontSize: "2.1rem", marginRight: "0.3rem", marginTop: "-0.8rem", marginBottom: '-0.2rem'}}/>, url: "/tutorials"}, 
+        icon: <MdOutlineCastForEducation style={{color: "rgba(255, 255, 255, 1.0)", fontSize: "2.1rem", marginRight: "0.7rem", marginTop: "-0.8rem", marginBottom: '-0.2rem'}}/>, url: "/tutorials"}, 
 ]
 
 // Header Component for HomePage:

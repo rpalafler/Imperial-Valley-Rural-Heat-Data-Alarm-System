@@ -2,6 +2,7 @@ import { useState, useEffect } from "react" ;
 import { NavLink } from "react-router-dom" ;
 
 import styles from "./HomePage.module.css" ;
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Import Navigation Menu Component
 import {NavMenu} from "../NavMenu/NavMenu" ;
@@ -22,19 +23,6 @@ const Hero = () => {
             </div>
             <div className={styles.hero_welcome}>
                 <img src={"imperial-valley-square-logo.png"} className={styles.logo_image}/>
-            </div>
-            <div className={styles.hero_nav}>
-                <Form>
-                    <Row xs={2} sm={2} md={2} lg={2} className={styles.inputRow}>
-                        <Col>
-                            <NavLink to='/app'>
-                                <Button variant={"primary"} type={"submit"} className={styles.inputSubmit}>
-                                    Go to the App ►
-                                </Button>
-                            </NavLink>
-                        </Col>
-                    </Row>
-                </Form>
             </div>
         </div>
 
@@ -59,7 +47,7 @@ const InformationalContent = () => {
             </Row>
             <Row xs={1} sm={1} md={1} lg={1} className={styles.info_container_row}>
                 <Col className={styles.info_container_tagline}>
-                    Powering Data Accessibility for the Imperial Valley and its Surrounding Regions
+                    Powering Data Accessibility for the Imperial Valley and its Surrounding Communities
                 </Col>
             </Row>
         </Container>

@@ -12,6 +12,9 @@ import { MdLocationCity } from "react-icons/md";
 
 import Nav from "react-bootstrap/Nav" ;
 
+// Sidebar Menu Components
+import { default as ClimateData } from './Tabs/ClimateData/ClimateData' ;
+
 // React Context Across Components
 import { SidebarContext } from '../MainApp';
    
@@ -25,7 +28,7 @@ function Sidebar() {
     const menuItemsNew = [
         {value: 0, name: "Climate Data", 
             icon: <IoEarthSharp className={styles.menuIcon} />, 
-            content: 'Hello'},
+            content: <ClimateData />},
         {value: 1, name: "Socioeconomic Data", 
             icon: <MdOutlineLibraryAdd className={styles.menuIcon} />, 
             content: 'Hello'},
@@ -42,7 +45,11 @@ function Sidebar() {
     const [openTab, setOpenTab] = useState(false) ;
     const handleTab = (tab) => {
         setActiveTab(tab) ;
-        setOpenTab(true) ;
+        if (tab.value === activeTab.value && openTab){
+            setOpenTab(false) ;
+        } else {
+            setOpenTab(true) ;
+        }
     } ;
 
     return(
@@ -51,24 +58,18 @@ function Sidebar() {
             <nav>
                 <ul>
                     <li style={{borderBottom: "none", 
-                        backgroundColor: "rgba(255, 255, 255, 1.0)", cursor: "default", marginTop: "-4rem",
-                        marginLeft: '-0.5rem',
-                        marginBottom: "-1.85rem", letterSpacing: "0.05rem", }}>
-                        <h2 style={{fontSize: "1.75rem", fontWeight: "600"}}>
+                        backgroundColor: 'rgba(255, 255, 255, 1.0)', cursor: "default", marginTop: "-0.7rem",
+                        marginLeft: '-0.3rem',
+                        marginBottom: "-0.85rem", letterSpacing: "0.05rem", }}>
+                        <h2 style={{fontSize: "1.75rem", fontWeight: "650"}}>
                             Customization Panel
                         </h2>
                     </li>
                     {/* Iterate through Sidebar Menu Items and Render as Verical Menu */}
                     {menuItemsNew.map((element) => {
                         return(
-                            <li>
+                            <li style={{backgroundColor: activeTab.value === element.value ? 'rgba(0, 0, 190, 0.055)' : 'rgba(255, 255, 255, 1.0)'}}>
                                 <Nav.Item key={element.value}
-                                    onMouseEnter={(e) => {
-                                        e.preventDefault() ;
-                                    }}
-                                    onMouseLeave={(e) => {
-                                        e.preventDefault() ;
-                                    }}
                                     onClick={() => handleTab(element)}>
                                         <Nav.Link eventKey={element.value} style={{textDecoration: 'none'}}>
                                             <div style={{display: 'flex', flexDirection: 'row'}}>
@@ -88,6 +89,10 @@ function Sidebar() {
                 </ul>
             </nav>
         </header>
+
+        <div className={(sidebarContext.sidebarState && openTab) ? [styles.tabMenu, styles.tabActive].join(" ") : styles.tabMenu}>
+            {activeTab.content}
+        </div>
         </>
     ) ;
 }
