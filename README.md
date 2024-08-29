@@ -3,9 +3,9 @@
 ![Imperial-Valley-Rural-Heat-Data-and-Alarm-System](https://github.com/user-attachments/assets/73860703-997e-4005-a38a-0eceb09c427b)
 
 
-## Developed by Ryan Paul Lafler of Premier Analytics Consulting, LLC
+## Developed by Ryan Paul Lafler of Premier Analytics Consulting, LLC for the SDSU Climate Informatics Laboratory
 
-### Copyright © 2024 by Ryan Paul Lafler and Premier Analytics Consulting, LLC. All Rights Reserved.
+### Copyright © 2024 by Ryan Paul Lafler and Samuel S.P. Shen. All Rights Reserved.
 
 ![Imperial-Valley-RHI-Lafler](https://github.com/user-attachments/assets/a51ec2f1-f08b-4247-9db4-f291789225d0)
 
