@@ -1,33 +1,31 @@
-import { useState, useEffect, createContext } from 'react' ;
+import { useState, createContext } from 'react';
+import { NavMenu } from '../NavMenu/NavMenu';
+import SubHeader from './DeckInterface/SubHeader/SubHeader';
+import DeckInterface from './DeckInterface/DeckInterface';
+import Sidebar from './Sidebar/Sidebar';
+import TimeSeriesChart from './TimeSeries/TimeSeriesChart';
+import './MainApp.css';
 
-// App Component Imports
-import { NavMenu } from '../NavMenu/NavMenu' ;
-import { default as SubHeader } from './DeckInterface/SubHeader/SubHeader' ;
-import { default as DeckInterface } from './DeckInterface/DeckInterface' ;
-import { default as Sidebar } from './Sidebar/Sidebar' ;
-
-export const SidebarContext = createContext() ;
-
+export const SidebarContext = createContext();
 
 function MainApp() {
+  const [sidebarState, setSidebarState] = useState(false);
 
-    // Across App Functionality States
-    const [sidebarState, setSidebarState] = useState(false) ;
-    function toggleSidebar() {
-        setSidebarState(!sidebarState) ;
-    } ;
-
-    return(
-        <>
-        <NavMenu showDev={false} />
-        < SidebarContext.Provider value={{ sidebarState, setSidebarState }} >
-            <SubHeader />
-            <Sidebar />
-        </ SidebarContext.Provider>
-
+  return (
+    <div className="main-app">
+      <NavMenu showDev={false} />
+      <SidebarContext.Provider value={{ sidebarState, setSidebarState }}>
+        <SubHeader />
+        <Sidebar />
+      </SidebarContext.Provider>
+      <div className="deck-interface">
         <DeckInterface />
-        </>
-    ) ;
+      </div>
+      <div className="chart-container">
+        <TimeSeriesChart />
+      </div>
+    </div>
+  );
 }
 
-export default MainApp ;
+export default MainApp;

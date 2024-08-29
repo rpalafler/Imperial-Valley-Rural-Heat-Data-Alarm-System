@@ -1,0 +1,18 @@
+/* MainApp.css */
+.main-app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Full viewport height */
+}
+
+.deck-interface {
+  flex: 1; /* Takes up all available space above the chart */
+}
+
+.chart-container {
+  width: 100%; /* Full width of the screen */
+  height: 600px; /* Fixed height for the chart */
+  background-color: #ffffff; /* Solid background color for the chart */
+  border-top: 1px solid #ddd; /* Optional: add a border to distinguish the chart area */
+  position: relative; /* Position relative to its parent */
+}
