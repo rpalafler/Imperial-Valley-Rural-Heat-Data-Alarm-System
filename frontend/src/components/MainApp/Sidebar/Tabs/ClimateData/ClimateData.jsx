@@ -20,12 +20,14 @@ import styles from './ClimateData.module.css' ;
 import { default as RTMA } from './RTMA/RTMA' ;
 
 // Import Context
-import { ClimateDataContext } from '../../../MainApp';
+import { ClimateDataContext, RTMAContext } from '../../../MainApp';
 
 
 
 function ClimateData() {
     const climateDataContext = useContext(ClimateDataContext) ;
+    const rtmaContext = useContext(RTMAContext) ;
+
     const [checkedItems, setCheckedItems] = useState(climateDataContext.climateDataOn) ;
     const handleDataSelection = (event) => {
         const { id, checked } = event.target ;
@@ -43,12 +45,14 @@ function ClimateData() {
         }) ;
     } ;
 
+
     // Satellite (Remote-Sensing) Datasets Array //
     const satelliteMenu = [
         {
             name: 'Hourly Real-Time Mesoscale Analysis (RTMA) Data',
             id: 'rtma',
             component: <RTMA />,
+            tabOpen: rtmaContext.rtmaTabOpen,
         },
     ] ;
     // Station (Fixed and Movable) Datasets Array //
@@ -59,21 +63,28 @@ function ClimateData() {
             component: 'ghcn',
         },
     ] ;
-
+    
 
     // Dataset Querying (Customization) Tab //
     const [dataTabOpen, setDataTabOpen] = useState(false) ;
-    const [dataOption, setDataOption] = useState() ;
+    const [dataOption, setDataOption] = useState(satelliteMenu[0]) ;
+    const [rtmaTabOpen, setRtmaTabOpen] = useState(rtmaContext.rtmaTabOpen) ;
+
+    useEffect(() => {
+        setRtmaTabOpen(rtmaContext.rtmaTabOpen) ;
+    }, [rtmaContext.rtmaTabOpen]) ;
+
     const handleDataOption = (option) => {
         console.log('Hello', option) ;
         setDataOption(option) ;
-        setDataTabOpen(!dataTabOpen) ;
+        rtmaContext.setRtmaTabOpen(true) ;
     } ;
+
 
     return(
         <>
         <div style={{display: 'flex', flexDirection: 'column'}}>
-            { dataTabOpen !== true ?
+            { (rtmaTabOpen !== true) ?
                 <>
                 <div className={styles.sectionContent}>
                     <h4>

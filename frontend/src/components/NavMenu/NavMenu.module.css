@@ -227,8 +227,8 @@
 
 @media screen and (max-width: 340px){
     .logo {
-        width: 13.24rem ;
-        height: 4.077rem ;
+        width: 16.54rem ;
+        height: 5.977rem ;
 
         margin-right: 0.15rem ;
         margin-left: 0.15rem ;
@@ -243,7 +243,7 @@
     }
 
     .mobile_button{
-        right: 0.7rem ;
+        right: 0.3rem ;
     }
 
     .subNav {

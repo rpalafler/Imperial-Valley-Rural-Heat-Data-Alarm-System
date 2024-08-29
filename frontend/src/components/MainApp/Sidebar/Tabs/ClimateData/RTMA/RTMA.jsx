@@ -63,6 +63,17 @@ function RTMA() {
     const rtmaContext = useContext(RTMAContext) ;
 
 
+    // Loading RTMA Data //
+    const [loading, setLoading] = useState(() => {
+        const value = rtmaContext.rtmaLoading === null ? false : rtmaContext.rtmaLoading ;
+        return value ;
+    }) ;
+    const handleLoading = (boolValue) => {
+        setLoading(boolValue) ;
+        rtmaContext.setRtmaLoading(boolValue) ;
+    } ;
+
+
     // Year Selection and Change Handler //
     const [year, setYear] = useState(() => {
         const value = rtmaContext.rtmaForm === null ? yearDefault : rtmaContext.rtmaForm.year ;
@@ -171,6 +182,7 @@ function RTMA() {
         console.log(JSON.stringify(preparedForm)) ;
         const sendRTMAData = async() => {
             try {
+                handleLoading(true) ;
                 const response = await fetch("http://localhost:5000/send_RTMA_request", {
                     method: "POST",
                     headers: {
@@ -181,6 +193,7 @@ function RTMA() {
                 if(!response.ok){
                     throw new Error("ERROR: Request could not be processed. Reload & Try Again.")
                 }
+                handleLoading(true) ;
                 const responseData = await response.json() ;
                 const rgbaImage = flatArrayToImageData(responseData['climate_var_image'], responseData['width'], responseData['height']) ;
                 const dataURL = imageDataToDataURL(rgbaImage) ;
@@ -198,6 +211,7 @@ function RTMA() {
             } finally {
                 console.log("Process Finished") ;
                 setSubmitOn(false) ;
+                handleLoading(false) ;
             }
         }
         if(submitOn === true) {
@@ -236,7 +250,7 @@ function RTMA() {
                     </Col>
                 </Row>
 
-                <Row xs={1} sm={1} md={1} lg={1} className={styles2.inputRow}>
+                <Row xs={2} sm={2} md={2} lg={2} className={styles2.inputRow}>
                     <Col>
                         <Form.Group controlId={"day-selection"}>
                             <Form.Label className={styles2.inputRowLabel}>
@@ -257,15 +271,15 @@ function RTMA() {
                     </Col>
                 </Row>
 
-                <Row xs={2} sm={2} md={2} lg={2} className={styles2.inputRow}>
+                <Row xs={2} sm={2} md={2} lg={2} className={styles2.inputSubmitRow}>
                     <Col>
-                        <Button variant={"primary"} type={"submit"} className={styles2.inputSubmit}>
-                            Submit
+                        <Button variant={"primary"} type={"submit"} disabled={loading} className={styles2.inputSubmit}>
+                            {loading === true ? 'Loading...' : 'Submit'}
                         </Button>
                     </Col>
                     <Col>
-                        <Button variant={"danger"} className={styles2.inputClear}>
-                            Cancel
+                        <Button variant={"danger"} className={styles2.inputClear} onClick={() => {rtmaContext.setRtmaTabOpen(false);}}>
+                            Close
                         </Button>
                     </Col>
                 </Row>

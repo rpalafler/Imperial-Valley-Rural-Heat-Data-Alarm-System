@@ -34,13 +34,20 @@
     border: solid 0.105rem rgba(0, 0, 245, 0.998) ;
 }
 
+.inputSubmitRow {
+    display: flex ;
+    flex-direction: row ;
+    margin-top: 3.3rem ;
+    margin-bottom: 1.95rem ;
+}
 .inputSubmit {
+    width: 10rem ;
     padding-top: 0.75rem ;
     padding-bottom: 0.75rem ;
     padding-left: 1.35rem ;
     padding-right: 1.35rem ;
 
-    margin-left: 0.4rem ;
+    margin-left: 0rem ;
 
     font-size: 1.5777rem ;
     font-weight: 525 ;
@@ -50,21 +57,49 @@
 .inputSubmit:hover {
     background-color: rgba(0, 105, 33, 0.95) ;
 }
+.inputSubmit:disabled {
+    width: 10rem ;
+    
+    background-color: rgba(4, 4, 131, 0.713) ;
+
+    padding-top: 0.75rem ;
+    padding-bottom: 0.75rem ;
+    padding-left: 0.5rem ;
+    padding-right: 0.5rem ;
+
+    font-size: 1.5777rem ;
+    font-weight: 525 ;
+    letter-spacing: 0.075rem ;
+}
 
 .inputClear {
+    width: 10rem ;
+
     padding-top: 0.75rem ;
     padding-bottom: 0.75rem ;
     padding-left: 1.35rem ;
     padding-right: 1.35rem ;
 
-    margin-left: -2rem ;
+    margin-left: 0rem ;
 
     font-size: 1.5777rem ;
     font-weight: 525 ;
     letter-spacing: 0.075rem ;
 }
 .inputClear:hover {
-    background-color: rgba(255, 42, 0, 0.97) ;
+    background-color: rgba(255, 10, 0, 0.991) ;
+}
+.inputClear:disabled {
+    width: 10rem ;
+
+    padding-top: 0.75rem ;
+    padding-bottom: 0.75rem ;
+    padding-left: 0.5rem ;
+    padding-right: 0.5rem ;
+
+    font-size: 1.5777rem ;
+    font-weight: 525 ;
+    letter-spacing: 0.075rem ;
 }
 
 input[type=checkbox]{

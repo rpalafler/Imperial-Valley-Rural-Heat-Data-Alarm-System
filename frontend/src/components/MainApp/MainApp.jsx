@@ -39,6 +39,8 @@ function MainApp() {
     //                         **** RTMA DATA ****                                    //
     // ****************************************************************************** //
     const [rtmaForm, setRtmaForm] = useState(null) ;
+    const [rtmaLoading, setRtmaLoading] = useState(false) ;
+    const [rtmaTabOpen, setRtmaTabOpen] = useState(false) ;
     const [rtmaData, setRtmaData] = useState(null) ;
 
 
@@ -47,7 +49,7 @@ function MainApp() {
         <NavMenu showDev={false} />
         < SidebarContext.Provider value={{ sidebarState, setSidebarState }} >
         < ClimateDataContext.Provider value={{ climateDataOn, setClimateDataOn }} >
-        < RTMAContext.Provider value ={{ rtmaForm, setRtmaForm, rtmaData, setRtmaData }} >
+        < RTMAContext.Provider value ={{ rtmaForm, setRtmaForm, rtmaData, setRtmaData, rtmaLoading, setRtmaLoading, rtmaTabOpen, setRtmaTabOpen }} >
 
             <SubHeader />
             <Sidebar />
