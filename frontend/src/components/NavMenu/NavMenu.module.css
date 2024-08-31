@@ -52,7 +52,7 @@
 
 .logo {
     width: 22.17rem ;
-    height: 6.17rem ;
+    height: 6.57rem ;
     margin-left: 0.45rem ;
     margin-right: -0.75rem ;
     margin-top: 0.15rem ;
@@ -74,7 +74,7 @@
 
     font-family: arial, sans-serif ;
     font-size: 1.35rem ;
-    margin-right: 2.45rem ;
+    margin-right: 2.75rem ;
     letter-spacing: 0.07777rem;
     font-weight: 650 ;
 }
@@ -106,7 +106,9 @@
         overflow-y: auto ;
     }
     .logo{
-        margin-left: 0.25rem ;
+        width: 20.67rem ;
+        height: 6.47rem ;
+        margin-left: 0.45rem ;
         margin-right: 0.05rem ;
     }
     .menu {
@@ -119,7 +121,7 @@
         bottom: 0 ;
         width: 100% ;
         height: auto ;
-        padding-top: 1.75rem ;
+        padding-top: 3.75rem ;
         padding-bottom: 3rem ;
 
         background-color: rgba(5, 10, 48, 1.0) ;
@@ -131,13 +133,16 @@
     }
     .menu li {
         margin-left: 0 ;
-        padding-left: 12rem ;
+        padding-left: 0rem ;
         padding-bottom: 2rem ;
         padding-top: 2rem ;
+        margin-top: 0.25rem ;
+
         border-bottom: rgba(255, 255, 255, 0.4777) 0.025rem solid ;
-        width: 530px ;
+        width: 60% ;
         justify-content: center ;
         align-items: center ;
+        text-align: center ;
 
         font-size: 1.877rem ;
         font-weight: 600 ;
@@ -165,15 +170,21 @@
 
 @media screen and (max-width: 769px){
     .logo {
-        width: 16.37rem ;
-        height: 4.77rem ;
+        width: 19.77rem ;
+        height: 6.37rem ;
+        margin-left: 0.41rem ;
+    }
+    .menu{
+        padding-top: 5rem ;
     }
     .menu li {
-        padding-left: 9.8rem ;
-        width: 440px ;
-        
+        width: 50% ;
         font-size: 1.7rem ;
         font-weight: 600 ;
+    }
+    .mobile_button {
+        right: 0.5rem ;
+        margin-bottom: -3.4rem ;
     }
 
     .subNav {
@@ -187,24 +198,25 @@
 
 @media screen and (max-width: 480px){
     .logo {
-        width: 18.44rem ;
-        height: 5.777rem ;
+        width: 17.64rem ;
+        height: 5.977rem ;
 
         margin-right: 0rem ;
         margin-left: 0.25rem ;
+        margin-bottom: 0.25rem ;
     }
     .menu {
-        padding-top: 2rem ;
+        padding-top: 3rem ;
     }
     .menu li {
-        padding-left: 4.9rem ;
-        width: 300px ;
-
-        font-size: 1.5rem ;
+        width: 70% ;
+        
+        font-size: 1.3rem ;
         font-weight: 600 ;
-    }
-    .mobile_button {
-        right: 1rem ;
+
+        padding-top: 1.7rem ;
+        padding-bottom: 1.7rem ;
+        margin-left: -0.45rem ;
     }
 
     .subNav {
@@ -215,19 +227,23 @@
 
 @media screen and (max-width: 340px){
     .logo {
-        width: 13.24rem ;
-        height: 4.077rem ;
+        width: 16.54rem ;
+        height: 5.977rem ;
 
         margin-right: 0.15rem ;
         margin-left: 0.15rem ;
     }
     .menu li {
-        font-size: 1.3777rem ;
+        width: 60% ;
+        padding-top: 1rem ;
+        padding-bottom: 1rem ;
+        
+        font-size: 1.2777rem ;
         font-weight: 600 ;
     }
 
     .mobile_button{
-        right: 0.7rem ;
+        right: 0.3rem ;
     }
 
     .subNav {
