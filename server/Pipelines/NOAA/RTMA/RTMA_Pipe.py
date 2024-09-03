@@ -30,6 +30,7 @@ from matplotlib.colors import Normalize
 import matplotlib.cm as cm
 from PIL import Image
 from io import BytesIO
+import os
 
 
 ## --------------------------------------------------------------- ##
@@ -37,6 +38,7 @@ from io import BytesIO
 ## --------------------------------------------------------------- ##
 class RTMA_Data_Pipe:
     def __init__(self, bucket='noaa-rtma-pds'):
+        os.environ['ECCODES_DEFINITION_PATH'] = '/usr/share/eccodes/definitions'
         self.s3_bucket = bucket
         self.s3_fs = fsspec.filesystem('s3', anon=True)
         self.s3_url = f's3://{self.s3_bucket}/'

@@ -9,11 +9,9 @@
 
 ![Imperial-Valley-RHI-Lafler](https://github.com/user-attachments/assets/a51ec2f1-f08b-4247-9db4-f291789225d0)
 
-The **Imperial Valley Rural Heat Data and Alarm System** is a data-driven web application ecosystem focused on integrating, visualizing, analyzying, and making accessible climatalogical, socioeconomic, infrastructure, and similar datasets to communities within the Imperial County, San Diego County, and Riverside County regions, including communities residing along the United States-Mexico international border and the California-Arizona state border. 
+The **Imperial Valley Rural Heat Data and Alarm System** is a data-driven web application ecosystem focused on making climatalogical, meteorological, socioeconomic, and infrastructure data repositories accessible to stakeholders, policymakers, researchers, and all citizens within the following counties in southern California: Imperial County, San Diego County, Orange County, Los Angeles County, and Riverside County. **The Imperial Valley Rural Heat Data and Alarm System** is capable of capturing historical trends, displaying real-time data, and visualizing high-resolution forecasts to better protect, inform, and incorporate these communities in these counties including those residing along the California-Arizona border and the United States-Mexico international border. 
 
-Developed and maintained by Ryan Paul Lafler, the Founder, CEO, Chief Data Scientist, and Lead Consultant of Premier Analytics Consulting, the **Imperial Valley Rural Heat Data and Alarm System** web application brings climate data accessibility and interactivity to the Imperial Valley and its surrounding communities.
-
-In an academic-business collaboration between Premier Analytics Consulting and San Diego State University's Climate Informatics Laboratory, spearheaded by Ryan Paul Lafler and Dr. Samuel Shen, the Imperial Valley web application is committed to training a diverse workforce of young professionals who can contribute to its growth, improvement, and increased functionalities.
+Developed and maintained by **Ryan Paul Lafler**, the Chief Data Scientist and Lead Consultant with Premier Analytics Consulting, and an Adjunct Faculty Mmember at San Diego State University, the **Imperial Valley Rural Heat Data and Alarm System** web application brings unparalleled climate data accessibility and interactivity to the Imperial Valley and its surrounding communities. Collaborating with **Dr. Samuel Shen** and his Climate Informatics Laboratory at SDSU, the **Imperial Valley Rural Heat Data and Alarm System** is committed to training a diverse workforce of graduate student professionals who can contribute to the application's growth, improvement, and increased functionalities.
 
 <h2>Development Leads</h2>
 
@@ -31,3 +29,4 @@ In an academic-business collaboration between Premier Analytics Consulting and S
 | **Riley Rutan** | San Diego State University | Big Data Analytics MS | 2024 | rrutan2426@sdsu.edu | www.LinkedIn.com/in/Riley-Rutan-2a5ba5178 |
 | **Miguel Angel Bravo** | San Diego State University | Big Data Analytics MS | 2024 | mbravomartinez0754@sdsu.edu | www.LinkedIn.com/in/Miguel-Angel-Bravo/ |
 | **Michael Albo** | San Diego State University | Big Data Analytics MS | 2024 | malbo1974@sdsu.edu | www.LinkedIn.com/in/Michael-Albo-55b74b196 |
+| **Ethan Nyi Nyi** | San Diego State University | Big Data Analytics MS | 2024 | enyinyi2187@sdsu.edu | www.LinkedIn.com/in/Nyi-Nyi/ |

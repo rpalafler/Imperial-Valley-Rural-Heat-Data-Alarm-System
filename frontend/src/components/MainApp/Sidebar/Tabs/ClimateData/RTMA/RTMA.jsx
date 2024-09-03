@@ -20,7 +20,7 @@ import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 import Spinner from 'react-bootstrap/Spinner';
 
 // Import Context
-import { RTMAContext } from '../../../../MainApp' ;
+import { ClimateDataContext, RTMAContext } from '../../../../MainApp' ;
 
 
 // Create Dropdown Arrays and Default Values
@@ -60,6 +60,7 @@ const imageDataToDataURL = (imageData) => {
 
 function RTMA() {
     // Import and use the context  //
+    const climateDataContext = useContext(ClimateDataContext) ;
     const rtmaContext = useContext(RTMAContext) ;
 
 
@@ -278,7 +279,7 @@ function RTMA() {
                         </Button>
                     </Col>
                     <Col>
-                        <Button variant={"danger"} className={styles2.inputClear} onClick={() => {rtmaContext.setRtmaTabOpen(false);}}>
+                        <Button variant={"danger"} className={styles2.inputClear} onClick={() => {climateDataContext.setClimateDataTabOn(false);}}>
                             Close
                         </Button>
                     </Col>

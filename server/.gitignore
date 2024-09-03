@@ -1,6 +1,6 @@
 # Ignore Virtual Environment
 /venv
 
-__pycache__
+/__pycache__
 
-__filerdb2__
+/filerdb2

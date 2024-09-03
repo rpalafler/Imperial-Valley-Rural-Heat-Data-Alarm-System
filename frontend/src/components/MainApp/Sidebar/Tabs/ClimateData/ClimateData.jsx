@@ -52,11 +52,17 @@ function ClimateData() {
             name: 'Hourly Real-Time Mesoscale Analysis (RTMA) Data',
             id: 'rtma',
             component: <RTMA />,
-            tabOpen: rtmaContext.rtmaTabOpen,
+            tabOpen: climateDataContext.climateDataTabOn,
         },
     ] ;
     // Station (Fixed and Movable) Datasets Array //
     const stationMenu = [
+        {
+            name: 'CDO Sensors (Dew Point and Relative Humidity)',
+            id: 'cdo',
+            component: <RTMA />,
+            tabOpen: climateDataContext.climateDataTabOn,
+        },
         {
             name: 'Global Historical Climatology Network (GHCN) Data',
             id: 'ghcn',
@@ -68,23 +74,23 @@ function ClimateData() {
     // Dataset Querying (Customization) Tab //
     const [dataTabOpen, setDataTabOpen] = useState(false) ;
     const [dataOption, setDataOption] = useState(satelliteMenu[0]) ;
-    const [rtmaTabOpen, setRtmaTabOpen] = useState(rtmaContext.rtmaTabOpen) ;
+    const [climateTabOpen, setClimateTabOpen] = useState(climateDataContext.climateDataTabOn) ;
 
     useEffect(() => {
-        setRtmaTabOpen(rtmaContext.rtmaTabOpen) ;
-    }, [rtmaContext.rtmaTabOpen]) ;
+        setClimateTabOpen(climateDataContext.climateDataTabOn) ;
+    }, [climateDataContext.climateDataTabOn]) ;
 
     const handleDataOption = (option) => {
         console.log('Hello', option) ;
         setDataOption(option) ;
-        rtmaContext.setRtmaTabOpen(true) ;
+        climateDataContext.setClimateDataTabOn(true) ;
     } ;
 
 
     return(
         <>
         <div style={{display: 'flex', flexDirection: 'column'}}>
-            { (rtmaTabOpen !== true) ?
+            { (climateTabOpen !== true) ?
                 <>
                 <div className={styles.sectionContent}>
                     <h4>

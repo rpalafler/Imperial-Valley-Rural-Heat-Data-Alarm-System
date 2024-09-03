@@ -47,23 +47,26 @@ function calculateBoundingBox(center, zoom) {
         latDistance = 70 * MILES_TO_DEGREES_LAT;
         lngDistance = 70 * MILES_TO_DEGREES_LNG;
     } else if(zoom < 8 && zoom >= 7){
-        latDistance = 50 * MILES_TO_DEGREES_LAT;
-        lngDistance = 50 * MILES_TO_DEGREES_LNG;
-    } else if(zoom < 10 && zoom >= 8){
-        latDistance = 40 * MILES_TO_DEGREES_LAT;
-        lngDistance = 40 * MILES_TO_DEGREES_LNG;
-    } else if(zoom < 12 && zoom >= 10){
+        latDistance = 60 * MILES_TO_DEGREES_LAT;
+        lngDistance = 60 * MILES_TO_DEGREES_LNG;
+    } else if(zoom < 9 && zoom >= 8){
+        latDistance = 30 * MILES_TO_DEGREES_LAT;
+        lngDistance = 30 * MILES_TO_DEGREES_LNG;
+    } else if(zoom < 10 && zoom >= 9){
         latDistance = 20 * MILES_TO_DEGREES_LAT;
         lngDistance = 20 * MILES_TO_DEGREES_LNG;
-    } else if(zoom < 13.5 && zoom >= 12){
-        latDistance = 8 * MILES_TO_DEGREES_LAT;
-        lngDistance = 8 * MILES_TO_DEGREES_LNG;
+    } else if(zoom < 13 && zoom >= 10){
+        latDistance = 10 * MILES_TO_DEGREES_LAT;
+        lngDistance = 10 * MILES_TO_DEGREES_LNG;
+    } else if(zoom < 13.5 && zoom >= 13){
+        latDistance = 5 * MILES_TO_DEGREES_LAT;
+        lngDistance = 5 * MILES_TO_DEGREES_LNG;
     } else if(zoom < 14 && zoom >= 13.5){
-        latDistance = 6 * MILES_TO_DEGREES_LAT;
-        lngDistance = 6 * MILES_TO_DEGREES_LNG;
+        latDistance = 5 * MILES_TO_DEGREES_LAT;
+        lngDistance = 5 * MILES_TO_DEGREES_LNG;
     } else if(zoom < 19 && zoom >= 14){
-        latDistance = 4 * MILES_TO_DEGREES_LAT;
-        lngDistance = 4 * MILES_TO_DEGREES_LNG;
+        latDistance = 3 * MILES_TO_DEGREES_LAT;
+        lngDistance = 3 * MILES_TO_DEGREES_LNG;
     } else {
         latDistance = 2 * MILES_TO_DEGREES_LAT;
         lngDistance = 2 * MILES_TO_DEGREES_LNG;
@@ -71,9 +74,9 @@ function calculateBoundingBox(center, zoom) {
   
     return [
         center[0] - lngDistance, // minLongitude
-        center[1] - latDistance, // minLatitude
+        center[1] - 0.5 * latDistance, // minLatitude
         center[0] + lngDistance, // maxLongitude
-        center[1] + latDistance  // maxLatitude
+        center[1] + 1.25 * latDistance  // maxLatitude
     ];
 }
 
@@ -85,11 +88,11 @@ function Env3D() {
 
     const [basemapLayer, setBasemapLayer] = useState(null) ;
     const [originalView, setOriginalView] = useState({
-        longitude: -115.77,
-        latitude: 33.032,
-        zoom: 10,
-        pitch: 58,
-        bearing: -35,
+        longitude: -115.79,
+        latitude: 33.082,
+        zoom: 9.5,
+        pitch: 55,
+        bearing: -30,
     });
     const [zoomLevel, setZoomLevel] = useState(originalView.zoom) ;
 
@@ -256,7 +259,7 @@ function Env3D() {
         image: rtmaContext.rtmaData ? rtmaContext.rtmaData['wind_image'] : null,
         _imageCoordinateSystem: COORDINATE_SYSTEM.LNGLAT,
         pickable: false,
-        numParticles: 100, // number
+        numParticles: zoomLevel < 13 ? 100 : 40, // number
         maxAge: 50, // number
         speedFactor: 30, // number
         color: [255, 255, 255], // [number, number, number]

@@ -31,8 +31,13 @@ function MainApp() {
         setSidebarState(!sidebarState) ;
     } ;
 
+    // ****************************************************************************** //
+    //                   **** CLIMATE DATA QUERYING TAB ****                          //
+    // ****************************************************************************** //
     // Turn Selected Climate Datasets ON / OFF
     const [climateDataOn, setClimateDataOn] = useState({}) ;
+    // OPEN / CLOSE Climate Data Querying Tab //
+    const [climateDataTabOn, setClimateDataTabOn] = useState(false) ;
 
 
     // ****************************************************************************** //
@@ -40,7 +45,6 @@ function MainApp() {
     // ****************************************************************************** //
     const [rtmaForm, setRtmaForm] = useState(null) ;
     const [rtmaLoading, setRtmaLoading] = useState(false) ;
-    const [rtmaTabOpen, setRtmaTabOpen] = useState(false) ;
     const [rtmaData, setRtmaData] = useState(null) ;
 
 
@@ -48,8 +52,8 @@ function MainApp() {
         <>
         <NavMenu showDev={false} />
         < SidebarContext.Provider value={{ sidebarState, setSidebarState }} >
-        < ClimateDataContext.Provider value={{ climateDataOn, setClimateDataOn }} >
-        < RTMAContext.Provider value ={{ rtmaForm, setRtmaForm, rtmaData, setRtmaData, rtmaLoading, setRtmaLoading, rtmaTabOpen, setRtmaTabOpen }} >
+        < ClimateDataContext.Provider value={{ climateDataOn, setClimateDataOn, climateDataTabOn, setClimateDataTabOn }} >
+        < RTMAContext.Provider value ={{ rtmaForm, setRtmaForm, rtmaData, setRtmaData, rtmaLoading, setRtmaLoading, }} >
 
             <SubHeader />
             <Sidebar />
