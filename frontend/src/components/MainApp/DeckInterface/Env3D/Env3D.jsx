@@ -17,7 +17,7 @@ import styles from "./Env3D.module.css";
 import { DeckGL, CompositeLayer } from "deck.gl";
 import { MapView, COORDINATE_SYSTEM } from "@deck.gl/core";
 import { TileLayer, Tile3DLayer, TerrainLayer } from "@deck.gl/geo-layers";
-import { BitmapLayer } from "@deck.gl/layers";
+import { BitmapLayer, ScatterplotLayer } from "@deck.gl/layers";
 import { ParticleLayer } from "deck.gl-particle";
 import {
   _TerrainExtension as TerrainExtension,
@@ -110,6 +110,16 @@ function Env3D() {
   const onViewStateChange = ({ viewState }) => {
     setZoomLevel(viewState.zoom);
     setCurrentViewState(viewState);
+  };
+
+  const [sensorPoint, setSensorPoint] = useState(() => {
+    const value =
+      sensorContext.sensorPoint === null ? null : sensorContext.sensorPoint;
+    return value;
+  });
+  const handleSensorPointChange = (info) => {
+    setSensorPoint(info);
+    sensorContext.setSensorPoint(info);
   };
 
   const ambientLight = new AmbientLight({
@@ -319,6 +329,28 @@ function Env3D() {
         anisotropicFiltering: false,
       });
     },
+    onClick: (info) => {
+      if (info && info.coordinate) {
+        console.log(info.coordinate);
+        handleSensorPointChange(info.coordinate); // Set the clicked point coordinates
+      }
+    },
+    parameters: {
+      depthTest: false,
+      cull: false,
+    },
+    extensions: [new TerrainExtension()],
+  });
+
+  const sensorPointLayer = new ScatterplotLayer({
+    id: "sensor-point",
+    data: sensorPoint ? [sensorPoint] : [],
+    getPosition: (d) => d,
+    getRadius: 500, // Adjust the radius to your needs
+    getFillColor: [255, 0, 0], // Red color for the clicked point
+    pickable: false,
+    stroked: true,
+    billboard: true,
     parameters: {
       depthTest: false,
       cull: false,
@@ -343,6 +375,7 @@ function Env3D() {
           climateDataContext.climateDataOn["rtma"] === true && zoomLevel < 13
             ? rtma_winds
             : null,
+          sensorPointLayer,
         ]}
         useDevicePixels="false"
         initialViewState={originalView}

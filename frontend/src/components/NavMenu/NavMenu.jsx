@@ -108,22 +108,6 @@ const menuArray = [
     ),
     url: "/tutorials",
   },
-  {
-    value: 5,
-    name: "Tutorials5",
-    icon: (
-      <MdOutlineCastForEducation
-        style={{
-          color: "rgba(255, 255, 255, 1.0)",
-          fontSize: "2.1rem",
-          marginRight: "0.7rem",
-          marginTop: "-0.8rem",
-          marginBottom: "-0.2rem",
-        }}
-      />
-    ),
-    url: "/tutorials",
-  },
 ];
 
 // Header Component for HomePage:

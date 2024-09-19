@@ -15,6 +15,7 @@ import { NavMenu } from "../NavMenu/NavMenu";
 import { default as SubHeader } from "./SubHeader/SubHeader";
 import { default as DeckInterface } from "./DeckInterface/DeckInterface";
 import { default as Sidebar } from "./Sidebar/Sidebar";
+import { default as PullupTab } from "./PullupTab/PullupTab";
 
 // Create Context --> Transmit information across components from parent to children //
 export const SidebarContext = createContext(); // Sidebar Context
@@ -50,6 +51,9 @@ function MainApp() {
   const [sensorForm, setSensorForm] = useState(null);
   const [sensorLoading, setSensorLoading] = useState(false);
   const [sensorData, setSensorData] = useState(null);
+  const [sensorPoint, setSensorPoint] = useState(null);
+  const [sensorPullUp, setSensorPullUp] = useState(false);
+  const [sensorTimeSeries, setSensorTimeSeries] = useState(null);
 
   return (
     <>
@@ -81,11 +85,18 @@ function MainApp() {
                 setSensorData,
                 sensorLoading,
                 setSensorLoading,
+                sensorPoint,
+                setSensorPoint,
+                sensorPullUp,
+                setSensorPullUp,
+                sensorTimeSeries,
+                setSensorTimeSeries,
               }}
             >
               <SubHeader />
               <Sidebar />
               <DeckInterface />
+              <PullupTab />
             </SensorContext.Provider>
           </RTMAContext.Provider>
         </ClimateDataContext.Provider>
