@@ -41,12 +41,14 @@ import orjson
 #  Data Pipeline Validation (Pydantic) Imports   #
 # ---------------------------------------------- #
 from Pipelines.NOAA.RTMA.Request_Data import RTMA_Data_Submission, RTMA_Parse_Data
+from Pipelines.Sensors.Request_Data import Sensor_Data_Submission, Sensor_Parse_Data
 
 
 # ---------------------------------------------- #
 #            Data Pipeline Imports               #
 # ---------------------------------------------- #
 from Pipelines.NOAA.RTMA.RTMA_Pipe import RTMA_Data_Pipe
+from Pipelines.Sensors.Sensor_Pipe import Sensor_Pipe
 
 
 # ---------------------------------------------- #
@@ -80,6 +82,62 @@ app.add_middleware(
 # ---------------------------------------------- #
 #           App Pathways (GET, POST)             #
 # ---------------------------------------------- #
+
+# Sensor Data Single Array Visualization --> Post User Request (POST Operation)
+@app.post('/send_sensor_vis_request')
+async def send_sensor_vis_request( data: Sensor_Data_Submission ) :
+    # Pydantic interpretation of user request for Sensor data
+    df = Sensor_Parse_Data( json_object = data )
+    df = jsonable_encoder(df.read())
+
+    # Retrieve and format user's variable selections
+    year = str(df['year'])
+    month = str(df['month'])
+    day = str(df['day'])
+    hour = str(df['hour'])
+    climate_var = str(df['climateVar'])
+
+    # Redirect the formatted user's request to the GET URL for Sensor Data
+    return RedirectResponse(
+        f'get_sensor_vis_request/?year={year}&month={month}&day={day}&hour={hour}&climate_var={climate_var}', status_code=303
+    )
+
+
+# Sensor Data Single Array Visualization --> Retrieve Data Request (GET Operation) 
+@app.get('/get_sensor_vis_request')
+async def get_sensor_vis_request( year:str, month:str, day:str, hour:str, climate_var ) :
+    # Establish unique connection to the sensor pipe
+    conn_sensor = Sensor_Pipe()
+
+    # Retrieve queried hourly array
+    ds = conn_sensor.generate_hour_vis(
+        year = year ,
+        month = month ,
+        day = day ,
+        hour = hour ,
+        climate_var = climate_var
+    )
+
+    # Generate JSON-structure containing visualization, hourly array, & metadata, 
+    if climate_var == 'rh2m' :
+        vis_json = conn_sensor.produce_vis_json(
+            array = ds ,
+            vmin = 10 ,
+            vmax = 90 ,
+        )
+    else :
+        vis_json = conn_sensor.produce_vis_json(
+            array = ds ,
+            vmin = 20 ,
+            vmax = 80 ,
+        )
+
+    # Serve the requested ORJSON-encoded data to the client
+    return ORJSONResponse(vis_json)
+
+
+
+
 
 # RTMA Data Pipeline --> Post User Request (POST operation)
 @app.post('/send_RTMA_request')
