@@ -16,10 +16,12 @@ import styles from './Env3D.module.css' ;
 // DeckGL Layer Components
 import { DeckGL, CompositeLayer } from 'deck.gl' ;
 import { MapView, COORDINATE_SYSTEM } from '@deck.gl/core' ;
-import { TileLayer, Tile3DLayer, TerrainLayer } from "@deck.gl/geo-layers" ;
+import { TileLayer, Tile3DLayer, TerrainLayer,  } from "@deck.gl/geo-layers" ;
 import { BitmapLayer } from '@deck.gl/layers' ;
 import { ParticleLayer } from 'deck.gl-particle' ;
 import {_TerrainExtension as TerrainExtension, CollisionFilterExtension} from '@deck.gl/extensions';
+
+
 
 // Data Context Imports
 import { ClimateDataContext } from '../../MainApp' ;
@@ -33,6 +35,9 @@ import { loadImage } from '@loaders.gl/images';
 
 /* Lighting Effects */
 import { LightingEffect, AmbientLight, DirectionalLight } from '@deck.gl/core';
+
+
+
 
 
 
@@ -155,6 +160,27 @@ function Env3D() {
         fetchSatelliteData() ;
         console.log("GLOBE Satellite!") ;
     }, [currentViewState]) ; // Only update tileLayer when the current viewing bounds are changed.
+
+    const basemap2DLayer = new TileLayer({
+        id: 'osm-basemap-layer',
+        data: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+        tileSize: 256,
+        minZoom: 0,
+        maxZoom: 19,
+        renderSubLayers: (props) => {
+            const { bbox: { west, south, east, north }, tile } = props;
+            return new BitmapLayer(props, {
+                data: null,
+                image: tile.data,
+                bounds: [west, south, east, north],
+                opacity: 1.0,
+            });
+        },
+        parameters: {
+            depthTest: false,
+            cull: false,
+        },
+    });
 
     const elevationLayer = new TerrainLayer({
         id: "terrain",
@@ -284,6 +310,7 @@ function Env3D() {
             layers={[
                 elevationLayer,
                 basemapLayer,
+                //basemap2DLayer,
                 climateDataContext.climateDataOn['rtma'] === true ? rtma_temp : null ,
                 climateDataContext.climateDataOn['rtma'] === true ? rtma_winds : null ,
             ]}

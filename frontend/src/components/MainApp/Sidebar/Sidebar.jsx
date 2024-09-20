@@ -24,6 +24,8 @@ import Nav from "react-bootstrap/Nav" ;
 
 // Sidebar Menu Components
 import { default as ClimateData } from './Tabs/ClimateData/ClimateData' ;
+import CoolingCenters from './Tabs/InfrastructureData/CoolingCenters/CoolingCenters';
+import Settings from './Tabs/Settings/Settings'
 
 // React Context Across Components
 import { SidebarContext } from '../MainApp';
@@ -44,10 +46,10 @@ function Sidebar() {
             content: 'Hello'},
         {value: 2, name: "Infrastructure Data", 
             icon: <MdLocationCity className={styles.menuIcon} />, 
-            content: 'Hello'},
+            content: <CoolingCenters />},
         {value: 3, name: "Adjust Settings", 
             icon: <IoSettingsOutline className={styles.menuIcon} />, 
-            content: 'Hello'},
+            content: <Settings />},
     ] ;
 
     // Captures & Sets the Active Tab's State //
