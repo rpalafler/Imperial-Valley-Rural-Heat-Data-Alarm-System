@@ -1,0 +1,111 @@
+/* Base styling for the pull-up tab */
+.pulluptab {
+  position: fixed;
+  bottom: -100%; /* Initially hidden, off-screen */
+  left: 0;
+  width: 100%;
+  height: 55%;
+  background-color: #f1f1f1;
+  transition: bottom 0.3s ease; /* Smooth transition */
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
+  z-index: 1000 !important;
+  padding: 20px;
+}
+
+/* When active, slide it up into view */
+.pulluptab.active {
+  bottom: 0; /* Move the tab up to be visible */
+  overflow-y: auto;
+}
+
+.sectionContent {
+  display: flex;
+  flex-direction: column;
+
+  width: 97%;
+  height: auto;
+
+  padding: 0rem;
+  padding-left: 0.2rem !important;
+  padding-right: 0.7rem !important ;
+
+  margin-top: 0.025rem !important ;
+  margin-left: 0.5rem;
+  margin-bottom: 1.5rem;
+  /* background-color: rgba(220, 220, 220, 1) ; */
+}
+.sectionContent h3 {
+  display: flex;
+  justify-content: left !important ;
+  align-items: center !important;
+  text-align: center !important;
+
+  width: 100%;
+
+  margin-top: -0.777rem;
+  padding-top: 0.65rem;
+  padding-bottom: 0.65rem;
+  padding-left: 0.65rem;
+  margin-left: 0rem;
+  margin-bottom: 0.65rem;
+
+  border-radius: 1rem !important ;
+  background-color: rgba(4, 4, 82, 0.95);
+
+  color: rgba(255, 255, 255, 1);
+  letter-spacing: 0.095rem !important ;
+  font-weight: 550 !important ;
+  font-size: 2.05rem;
+}
+
+.sectionContent h4 {
+  display: flex;
+  justify-content: left !important ;
+  align-items: center !important;
+  text-align: center !important;
+
+  width: auto;
+
+  padding-top: 0.25rem;
+  padding-bottom: 0rem;
+  padding-left: 0.85rem;
+  margin-left: 0rem;
+  margin-bottom: -0.2rem;
+
+  border-radius: 1rem !important ;
+  background-color: rgba(255, 255, 255, 0);
+
+  color: rgba(255, 255, 255, 1);
+  letter-spacing: 0.095rem !important ;
+  font-weight: 500 !important ;
+  font-size: 1.5rem;
+}
+
+.spinner {
+  display: flex;
+  flex-direction: row;
+  justify-content: left !important ;
+  align-items: center !important;
+  text-align: center !important;
+
+  width: 100%;
+
+  padding-top: 0.95rem;
+  padding-bottom: 0.95rem;
+  padding-left: 0.85rem;
+  margin-left: 0rem;
+  margin-right: 1rem;
+  margin-bottom: 0.65rem;
+
+  border-radius: 1rem !important ;
+  background-color: rgba(255, 255, 255, 0);
+
+  color: rgba(4, 4, 82, 1);
+  letter-spacing: 0.095rem !important ;
+  font-weight: 550 !important ;
+  font-size: 15.5rem;
+}
+.spinnerText {
+  margin-left: 3rem;
+  font-size: 2.5rem;
+}

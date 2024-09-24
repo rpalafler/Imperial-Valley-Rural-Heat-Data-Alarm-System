@@ -1,10 +1,13 @@
 import React, { useState, useEffect, useContext } from "react";
-import "./PullupTab.css";
+import styles from "./PullupTab.module.css";
 
+// Import SensorContext object from MainApp parent component
 import { SensorContext } from "../MainApp";
 
-// React-Bootstrap Offcanvas Component
-import Offcanvas from "react-bootstrap/Offcanvas";
+// React-Bootstrap Components
+import Spinner from "react-bootstrap/Spinner";
+
+// React-Chart-js and Chart.js Libraries
 import { Line } from "react-chartjs-2";
 import {
   Chart as ChartJS,
@@ -33,15 +36,18 @@ ChartJS.register(
 );
 
 function PullupTab() {
+  // Use global features stored inside SensorContext for this child component of MainApp
   const sensorContext = useContext(SensorContext);
 
   const [sensorData, setSensorData] = useState(null);
   const [chartData, setChartData] = useState(null);
   const [chartOptions, setChartOptions] = useState(null);
+  const [loadingData, setLoadingData] = useState(false);
 
   useEffect(() => {
     const sendSensorData = async () => {
       try {
+        setLoadingData(true);
         const response = await fetch("http://localhost:5000/send_location", {
           method: "POST",
           headers: {
@@ -63,11 +69,12 @@ function PullupTab() {
         const responseData = await response.json();
         sensorContext.setSensorTimeSeries(responseData); // Store the time series in context
         setSensorData(responseData); // Set the local state for sensorData
-        console.log("Data received from server:", responseData);
+        // console.log("Data received from server:", responseData);
       } catch (error) {
         console.log("ERROR ", error);
       } finally {
         console.log("Process Finished");
+        setLoadingData(false);
       }
     };
 
@@ -89,9 +96,10 @@ function PullupTab() {
                 : "Dewpoint Temp (°F)",
             data: sensorData.DATA, // Y-axis: Data values
             fill: true,
-            backgroundColor: "rgba(75, 192, 192, 0.2)",
-            borderColor: "rgba(75, 192, 192, 1)",
-            tension: 0.4, // Smooth the line
+            borderColor: "rgba(0, 0, 140, 1.00)",
+            backgroundColor: "rgba(93, 63, 211, 0.35777)",
+            borderWidth: 1.977,
+            tension: 0.5, // Smooth the line
           },
         ],
       };
@@ -100,6 +108,13 @@ function PullupTab() {
       const chartOptionsPrep = {
         responsive: true,
         maintainAspectRatio: false, // Add this line
+        elements: {
+          point: {
+            radius: 1.7777,
+            hoverRadius: 15.777,
+            backgroundColor: "rgba(100, 138, 138, 1.0)",
+          },
+        },
         layout: {
           padding: {
             left: 10,
@@ -127,10 +142,10 @@ function PullupTab() {
           },
           tooltip: {
             titleFont: {
-              size: 21,
+              size: 25,
             },
             bodyFont: {
-              size: 18,
+              size: 23.5,
             },
           },
         },
@@ -160,14 +175,19 @@ function PullupTab() {
   }, [sensorData]);
 
   return (
-    <div>
+    <div className={styles.sectionContent}>
       <div
-        className={`pullup-tab ${sensorContext.sensorTabOpen ? "active" : ""}`}
+        className={
+          sensorContext.sensorTabOpen
+            ? [styles.pulluptab, styles.active].join(" ")
+            : styles.pulluptab
+        }
       >
         <div style={{ display: "flex", flexDirection: "row" }}>
           {sensorContext.sensorPoint ? (
             <h3>
-              Sensor Data for ({sensorContext.sensorPoint[0].toFixed(3)},{" "}
+              Sensor Data Time Series for (
+              {sensorContext.sensorPoint[0].toFixed(3)},{" "}
               {sensorContext.sensorPoint[1].toFixed(3)})
             </h3>
           ) : null}
@@ -189,11 +209,15 @@ function PullupTab() {
         </h4>
 
         {/* TIME SERIES GRAPH COMPONENT USING CHART.JS */}
-        <div style={{ width: "97%", height: "90%" }}>
-          {chartData && chartOptions ? (
+        <div style={{ width: "99%", height: "85%" }}>
+          {chartData && chartOptions && loadingData === false ? (
             <Line data={chartData} options={chartOptions} />
           ) : (
-            <p>Loading data...</p>
+            <div className={styles.spinner}>
+              <Spinner animation="border" role="status" />
+              {"  "}
+              <div className={styles.spinnerText}>Loading...</div>
+            </div>
           )}
         </div>
       </div>
