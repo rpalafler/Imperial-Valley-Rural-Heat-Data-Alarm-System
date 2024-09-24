@@ -333,6 +333,7 @@ function Env3D() {
       if (info && info.coordinate) {
         console.log(info.coordinate);
         handleSensorPointChange(info.coordinate); // Set the clicked point coordinates
+        sensorContext.setSensorTabOpen(true); // Open the tab on click
       }
     },
     parameters: {

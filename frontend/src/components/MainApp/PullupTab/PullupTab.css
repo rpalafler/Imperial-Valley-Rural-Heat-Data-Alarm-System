@@ -15,4 +15,5 @@
 /* When active, slide it up into view */
 .pullup-tab.active {
   bottom: 0; /* Move the tab up to be visible */
+  overflow-y: auto;
 }
