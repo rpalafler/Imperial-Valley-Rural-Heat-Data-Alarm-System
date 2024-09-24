@@ -60,7 +60,7 @@ function PullupTab() {
         }
         const responseData = await response.json();
 
-        sensorContext.setSensorData(responseData);
+        sensorContext.setSensorTimeSeries(responseData);
         console.log("I'm the data you saved:", responseData);
       } catch (error) {
         console.log("ERROR ", error);
@@ -68,13 +68,20 @@ function PullupTab() {
         console.log("Process Finished");
       }
     };
+
+    sendSensorData();
   }, [sensorContext.sensorPoint]);
 
   return (
     <div>
       <div className={`pullup-tab ${isActive ? "active" : ""}`}>
-        <p>This is the pull-up tab content</p>
-        <p>{sensorContext.sensorPoint}</p>
+        <p>Sensor Data for </p>
+        <p>
+          {
+            (sensorContext.sensorPoint[0].toFixed(3),
+            sensorContext.sensorPoint[1].toFixed[0])
+          }
+        </p>
       </div>
     </div>
   );

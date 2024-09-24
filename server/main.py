@@ -41,7 +41,7 @@ import orjson
 #  Data Pipeline Validation (Pydantic) Imports   #
 # ---------------------------------------------- #
 from Pipelines.NOAA.RTMA.Request_Data import RTMA_Data_Submission, RTMA_Parse_Data
-from Pipelines.Sensors.Request_Data import Sensor_Data_Submission, Sensor_Parse_Data
+from Pipelines.Sensors.Request_Data import Sensor_Data_Submission, Sensor_Data_Time_Series, Sensor_Parse_Data
 
 
 # ---------------------------------------------- #
@@ -135,6 +135,32 @@ async def get_sensor_vis_request( year:str, month:str, day:str, hour:str, climat
     # Serve the requested ORJSON-encoded data to the client
     return ORJSONResponse(vis_json)
 
+
+@app.post('/send_location')
+async def send_location( data: Sensor_Data_Time_Series ) :
+    # Pydantic interpretation of user request for RTMA data
+    df = Sensor_Parse_Data( json_object = data )
+    df = jsonable_encoder(df.read())
+
+    lon = float(df['lon'])
+    lat = float(df['lat'])
+    climateVar = str(df['climateVar'])
+
+    return RedirectResponse(
+        f'retrieve_time_series/?lon={lon}&lat={lat}&climateVar={climateVar}', status_code=303
+    )
+
+@app.get('/retrieve_time_series')
+async def retrieve_time_series(lon: float, lat: float, climateVar: str) :
+    # Establish unique connection to the sensor pipe
+    conn_sensor = Sensor_Pipe()
+    print('Data Retrieved')
+    time_series_json = conn_sensor.generate_time_series(
+        lon = lon,
+        lat = lat,
+        climate_var = climateVar,
+    )
+    return ORJSONResponse(time_series_json)
 
 
 
