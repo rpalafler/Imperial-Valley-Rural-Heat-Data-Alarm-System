@@ -22,10 +22,12 @@ export const SidebarContext = createContext(); // Sidebar Context
 export const ClimateDataContext = createContext(); // Climate Data Selections
 export const RTMAContext = createContext(); // RTMA Data
 export const SensorContext = createContext(); // Sensor Data
+export const Basemap2DContext = createContext();
 
 function MainApp() {
   // Across App Functionality States
   const [sidebarState, setSidebarState] = useState(false);
+
   function toggleSidebar() {
     setSidebarState(!sidebarState);
   }
@@ -54,6 +56,12 @@ function MainApp() {
   const [sensorPoint, setSensorPoint] = useState(null);
   const [sensorPullUp, setSensorPullUp] = useState(false);
   const [sensorTimeSeries, setSensorTimeSeries] = useState(null);
+
+  // basemap change button
+  const [useBasemapLayer2D, setUseBasemapLayer2D] = useState(true);
+  const toggleBasemap = () => {
+    setUseBasemapLayer2D((prev) => !prev);
+  };
 
   return (
     <>
@@ -93,10 +101,14 @@ function MainApp() {
                 setSensorTimeSeries,
               }}
             >
-              <SubHeader />
-              <Sidebar />
-              <DeckInterface />
-              <PullupTab />
+              <Basemap2DContext.Provider
+                value={{ useBasemapLayer2D, toggleBasemap }}
+              >
+                <SubHeader />
+                <Sidebar />
+                <DeckInterface />
+                <PullupTab />
+              </Basemap2DContext.Provider>
             </SensorContext.Provider>
           </RTMAContext.Provider>
         </ClimateDataContext.Provider>

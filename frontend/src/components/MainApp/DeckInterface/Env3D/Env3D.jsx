@@ -14,14 +14,6 @@ import { useState, useEffect, useContext } from "react";
 import styles from "./Env3D.module.css";
 
 // DeckGL Layer Components
-<<<<<<< HEAD
-import { DeckGL, CompositeLayer } from 'deck.gl' ;
-import { MapView, COORDINATE_SYSTEM } from '@deck.gl/core' ;
-import { TileLayer, Tile3DLayer, TerrainLayer,  } from "@deck.gl/geo-layers" ;
-import { BitmapLayer } from '@deck.gl/layers' ;
-import { ParticleLayer } from 'deck.gl-particle' ;
-import {_TerrainExtension as TerrainExtension, CollisionFilterExtension} from '@deck.gl/extensions';
-=======
 import { DeckGL, CompositeLayer } from "deck.gl";
 import { MapView, COORDINATE_SYSTEM } from "@deck.gl/core";
 import { TileLayer, Tile3DLayer, TerrainLayer } from "@deck.gl/geo-layers";
@@ -31,14 +23,12 @@ import {
   _TerrainExtension as TerrainExtension,
   CollisionFilterExtension,
 } from "@deck.gl/extensions";
->>>>>>> origin/main
-
-
 
 // Data Context Imports
 import { ClimateDataContext } from "../../MainApp";
 import { RTMAContext } from "../../MainApp";
 import { SensorContext } from "../../MainApp";
+import { Basemap2DContext } from "../../MainApp";
 
 /* Visualize Gridded Datasets */
 import GL from "@luma.gl/constants";
@@ -48,9 +38,6 @@ import { loadImage } from "@loaders.gl/images";
 
 /* Lighting Effects */
 import { LightingEffect, AmbientLight, DirectionalLight } from "@deck.gl/core";
-
-
-
 
 /* Limit Active Viewport to a Bounding Box Determined by Zoom Level and Total Square Miles */
 const MILES_TO_DEGREES_LAT = 1 / 69; // Approximate conversion for latitude
@@ -101,6 +88,7 @@ function Env3D() {
   const climateDataContext = useContext(ClimateDataContext);
   const rtmaContext = useContext(RTMAContext);
   const sensorContext = useContext(SensorContext);
+  const { useBasemapLayer2D } = useContext(Basemap2DContext);
 
   const [basemapLayer, setBasemapLayer] = useState(null);
   const [originalView, setOriginalView] = useState({
@@ -189,6 +177,29 @@ function Env3D() {
     console.log("GLOBE Satellite!");
   }, [currentViewState]); // Only update tileLayer when the current viewing bounds are changed.
 
+  const BaseLayer2D = new TileLayer({
+    id: "BaseLayer",
+    data: "https://c.tile.openstreetmap.org/{z}/{x}/{y}.png",
+    maxZoom: 19,
+    minZoom: 0,
+
+    renderSubLayers: (props) => {
+      const { boundingBox } = props.tile;
+
+      return new BitmapLayer(props, {
+        data: null,
+        image: props.data,
+        bounds: [
+          boundingBox[0][0],
+          boundingBox[0][1],
+          boundingBox[1][0],
+          boundingBox[1][1],
+        ],
+      });
+    },
+    pickable: true,
+  });
+
   const elevationLayer = new TerrainLayer({
     id: "terrain",
     visible: true,
@@ -262,111 +273,9 @@ function Env3D() {
             : null,
       });
 
-<<<<<<< HEAD
-                    },
-                    extensions: [new TerrainExtension()],
-                }) ;
-                setBasemapLayer(satelliteLayer) ;
-            } catch(error) {
-                console.error("Error Fetching Data: ", error) ;
-            } 
-        } ;
-        fetchSatelliteData() ;
-        console.log("GLOBE Satellite!") ;
-    }, [currentViewState]) ; // Only update tileLayer when the current viewing bounds are changed.
-
-    const basemap2DLayer = new TileLayer({
-        id: 'osm-basemap-layer',
-        data: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-        tileSize: 256,
-        minZoom: 0,
-        maxZoom: 19,
-        renderSubLayers: (props) => {
-            const { bbox: { west, south, east, north }, tile } = props;
-            return new BitmapLayer(props, {
-                data: null,
-                image: tile.data,
-                bounds: [west, south, east, north],
-                opacity: 1.0,
-            });
-        },
-        parameters: {
-            depthTest: false,
-            cull: false,
-        },
-    });
-
-    const elevationLayer = new TerrainLayer({
-        id: "terrain",
-        visible: true,
-        tileSize: 456,
-        extent: boundingBox,
-        refinementStrategy: 'best-available',
-        debounceTime: 10,
-        maxRequests: 128,
-        elevationDecoder: {
-            rScaler: 256,
-            gScaler: 1,
-            bScaler: 1 / 265,
-            offset: -32768,
-        },
-        elevationScale: 10,
-        tesselator: 'martini',
-        elevationData: `https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png` ,
-        texture: [
-            // `https://mt0.google.com/vt/lyrs=s&hl=en&x={x}&y={y}&z={z}`,
-            `https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}`,
-        ],
-        loadOptions: {maxConcurrency: 16},
-        getPolygonOffset: false,
-        pickable: false,
-        maxCacheSize: 4500,
-        wireframe: false,
-        color: [255, 255, 255],
-        material: true,
-        meshMaxError: 10,
-        //modelMatrix: new Matrix4().translate([0, 0, -100]),
-        operation: 'terrain+draw',
-        maxZoom: 13,
-        parameters: {
-            depthTest: true,
-            cull: false,
-        },
-        onAfterRender: ({gl}) => {
-            setParameters(gl, {
-                generateMipmaps: true,
-                anisotropicFiltering: false
-            });
-        },
-    }) ;
-
-
-
-    const [hoverInfo, setHoverInfo] = useState(null) ;
-    const handleHover = (info, event) => {
-        if (info && info.bitmap && info.bitmap.pixel && info.bitmap.size) {
-            const pixelX = info.bitmap.pixel[0];
-            const pixelY = info.bitmap.pixel[1];
-            const pixelWidth = info.bitmap.size.width;
-            const index = pixelY * pixelWidth + pixelX;
-      
-            setHoverInfo({
-              x: event.center.x,
-              y: event.center.y,
-              lon: info.coordinate[0],
-              lat: info.coordinate[1],
-              temperature: rtmaContext.rtmaData['climate_var_values'][index],
-            });
-
-            // console.log(event, rtmaContext.rtmaData['climate_var_values'][index]) ;
-          } else {
-            setHoverInfo(null);
-          }
-=======
       // console.log(event, rtmaContext.rtmaData['climate_var_values'][index]) ;
     } else {
       setHoverInfo(null);
->>>>>>> origin/main
     }
   };
   const rtma_temp = new BitmapLayer({
@@ -474,66 +383,6 @@ function Env3D() {
     extensions: [new TerrainExtension()],
   });
 
-<<<<<<< HEAD
-    return(
-        <>
-        <DeckGL
-            views={new MapView({
-                repeat: false,
-                orthographic: false,
-            })}
-            layers={[
-                elevationLayer,
-                basemapLayer,
-                //basemap2DLayer,
-                climateDataContext.climateDataOn['rtma'] === true ? rtma_temp : null ,
-                climateDataContext.climateDataOn['rtma'] === true ? rtma_winds : null ,
-            ]}
-            useDevicePixels='false'
-            initialViewState={originalView}
-            onViewStateChange={({viewState}) => {
-                setZoomLevel(viewState.zoom) ;
-                setCurrentViewState(viewState) ;
-                console.log(viewState.zoom) ;
-                if ((originalView.longitude !== viewState.longitude) && (originalView.latitude !== viewState.latitude)){
-                    const boundingBox = calculateBoundingBox([viewState.longitude, viewState.latitude], viewState.zoom); // 20 miles
-                    setBoundingBox(boundingBox) ;
-                } else if (Math.abs(viewState.zoom - zoomLevel) >= 2 ){
-                    const boundingBox = calculateBoundingBox([viewState.longitude, viewState.latitude], viewState.zoom); // 20 miles
-                    setBoundingBox(boundingBox) ;
-                }
-            }}
-            controller={{ maxPitch: 73, maxZoom: 23 }}
-            parameters={{
-                clearColor: [0, 0, 0, 255],
-            }}
-            effects={[lightingEffect]}
-        />
-        {hoverInfo && (
-            <div
-            style={{
-                position: 'absolute',
-                maxWidth: '15rem',
-                fontSize: '1.5rem',
-                fontWeight: '600',
-                letterSpacing: '0.07rem',
-                left: hoverInfo.x,
-                top: hoverInfo.y + 10, // Position above the cursor
-                marginTop: '-10rem',
-                backgroundColor: 'rgba(255, 255, 255, 0.75)',
-                padding: '0.75rem',
-                borderRadius: '1rem',
-                boxShadow: '0 2px 5px rgba(0,0,0,0.3)',
-                pointerEvents: 'none', // Prevent the tooltip from interfering with hover events
-            }}>
-                <div>Lon: {hoverInfo.lon.toFixed(3)}</div>
-                <div>Lat: {hoverInfo.lat.toFixed(3)}</div>
-                <div>Temp: {hoverInfo.temperature}°F</div>
-            </div>
-        )}
-        </>
-    ) ;
-=======
   return (
     <>
       <DeckGL
@@ -544,8 +393,9 @@ function Env3D() {
           })
         }
         layers={[
-          elevationLayer,
-          basemapLayer,
+          !useBasemapLayer2D ? elevationLayer : null,
+          !useBasemapLayer2D ? basemapLayer : null,
+          useBasemapLayer2D ? BaseLayer2D : null, //show baselayer2D if active
           climateDataContext.climateDataOn["rtma"] === true ? rtma_temp : null,
           sensorClimateVarLayer,
           climateDataContext.climateDataOn["rtma"] === true && zoomLevel < 13
@@ -617,7 +467,6 @@ function Env3D() {
       )}
     </>
   );
->>>>>>> origin/main
 }
 
 export default Env3D;

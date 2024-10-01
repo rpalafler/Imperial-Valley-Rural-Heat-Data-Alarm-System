@@ -82,6 +82,9 @@ app.add_middleware(
 # ---------------------------------------------- #
 #           App Pathways (GET, POST)             #
 # ---------------------------------------------- #
+@app.get("/")
+async def read_root():
+    return {"message": "Welcome to the FastAPI server!"}
 
 # Sensor Data Single Array Visualization --> Post User Request (POST Operation)
 @app.post('/send_sensor_vis_request')
