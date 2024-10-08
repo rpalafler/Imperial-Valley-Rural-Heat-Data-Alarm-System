@@ -48,14 +48,16 @@ function MainApp() {
   const [rtmaData, setRtmaData] = useState(null);
 
   // ****************************************************************************** //
-  //                       **** SENSOR DATA ****                                    //
+  //          **** SENSOR DATA ****  STORE STATES INSIDE OF A COMPONENT             //
   // ****************************************************************************** //
   const [sensorForm, setSensorForm] = useState(null);
   const [sensorLoading, setSensorLoading] = useState(false);
   const [sensorData, setSensorData] = useState(null);
-  const [sensorPoint, setSensorPoint] = useState(null);
+  const [sensorPoint, setSensorPoint] = useState(null); // Time Series React State for location (clicked point)
   const [sensorPullUp, setSensorPullUp] = useState(false);
   const [sensorTimeSeries, setSensorTimeSeries] = useState(null);
+  // Global variable that opens & closes the tab on click
+  const [sensorTabOpen, setSensorTabOpen] = useState(false);
 
   // basemap change button
   const [useBasemapLayer2D, setUseBasemapLayer2D] = useState(true);
@@ -85,6 +87,8 @@ function MainApp() {
               setRtmaLoading,
             }}
           >
+            {/* Connect context to child components and specify states defined in parent 
+            (MainApp) for global states */}
             <SensorContext.Provider
               value={{
                 sensorForm,
@@ -99,6 +103,8 @@ function MainApp() {
                 setSensorPullUp,
                 sensorTimeSeries,
                 setSensorTimeSeries,
+                sensorTabOpen,
+                setSensorTabOpen,
               }}
             >
               <Basemap2DContext.Provider

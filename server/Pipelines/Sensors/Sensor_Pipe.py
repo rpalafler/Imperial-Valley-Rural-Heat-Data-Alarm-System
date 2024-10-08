@@ -80,7 +80,7 @@ class Sensor_Pipe :
     ## =================================================================================== ##
     ##  Generate Time-Series for Pixel: Create Delayed Object and Compute its Task Graph   ##
     ## =================================================================================== ##
-    def generate_time_series(self, lon, lat, start_year, start_month, start_day, end_year, end_month, end_day, climate_var='td2m') :
+    def generate_time_series(self, lon, lat, start_year=2020, start_month=3, start_day=1, end_year=2020, end_month=9, end_day=1, climate_var='td2m') :
 
         # Specify the start date -> (year, month day)
         start_date = datetime.datetime(int(start_year), int(start_month), int(start_day))

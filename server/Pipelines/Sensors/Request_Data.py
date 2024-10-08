@@ -18,6 +18,11 @@ class Sensor_Data_Submission(BaseModel) :
     hour: int
     climateVar: str
 
+class Sensor_Data_Time_Series(BaseModel) :
+    lon: float
+    lat: float
+    climateVar: str
+
 class Sensor_Parse_Data :
     def __init__(self, json_object, ) :
         self.df = json_object
