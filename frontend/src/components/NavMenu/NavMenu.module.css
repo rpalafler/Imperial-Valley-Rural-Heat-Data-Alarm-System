@@ -1,252 +1,252 @@
 /* MAIN HEADER CONTAINER */
 .navbar {
-    display: flex ;
-    flex-direction: row ;
-    position: sticky ;
-    top: 0 ;
-    z-index: 100 !important ;
+  display: flex;
+  flex-direction: row;
+  position: sticky;
+  top: 0;
+  z-index: 100 !important ;
 
-    width: 100% ;
-    height: 7.077rem ;
+  width: 100%;
+  height: 7.077rem;
 
-    justify-content: left ;
-    align-items: center ;
+  justify-content: left;
+  align-items: center;
 
-    background-color: rgba(5, 10, 48, 0.99) ;
-    padding: 0rem ;
-    padding-bottom: 0rem ;
-    margin-bottom: 0rem ;
+  background-color: rgba(5, 10, 48, 0.99);
+  padding: 0rem;
+  padding-bottom: 0rem;
+  margin-bottom: 0rem;
 
-    overflow-x: hidden ;
-    overflow-y: hidden ;
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 .subNav {
-    display: flex ;
-    flex-direction: row ;
-    position: sticky ;
-    z-index: 100 !important ;
+  display: flex;
+  flex-direction: row;
+  position: sticky;
+  z-index: 100 !important ;
 
-    top: 7.077rem ;
-    width: 100% ;
-    height: 2.97rem ;
-    background-color: rgba(5, 15, 94, 0.99);
+  top: 7.077rem;
+  width: 100%;
+  height: 2.97rem;
+  background-color: rgba(5, 15, 94, 0.99);
 
-    align-items: center ;
-    text-align: center ;
-    justify-content: center ;
-    padding: 0rem ;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  padding: 0rem;
 
-    color: rgba(255, 255, 255, 1) ;
-    font-size: 1.075rem ;
-    font-weight: 450 ;
-    letter-spacing: 0.1rem ;
+  color: rgba(255, 255, 255, 1);
+  font-size: 1.075rem;
+  font-weight: 450;
+  letter-spacing: 0.1rem;
 
-    /* border-top: rgba(255, 255, 255, 0.1) solid 0.001rem ; */
-    border-bottom: rgba(255, 255, 255, 0.1) solid 0.005rem ;
+  /* border-top: rgba(255, 255, 255, 0.1) solid 0.001rem ; */
+  border-bottom: rgba(255, 255, 255, 0.1) solid 0.005rem;
 
-    overflow-x: hidden !important;
-    overflow-y: hidden ;
-    overflow: hidden ;
+  overflow-x: hidden !important;
+  overflow-y: hidden;
+  overflow: hidden;
 }
 
 .logo {
-    width: 22.17rem ;
-    height: 6.57rem ;
-    margin-left: 0.45rem ;
-    margin-right: -0.75rem ;
-    margin-top: 0.15rem ;
-    padding-bottom: 0rem ;
-    margin-bottom: 0.15rem ;
+  width: 22.17rem;
+  height: 6.57rem;
+  margin-left: 0.3rem;
+  margin-right: 1.15rem;
+  margin-top: 0.15rem;
+  padding-bottom: 0rem;
+  margin-bottom: 0.15rem;
 }
 
 .menu {
-    display: flex ;
-    flex-direction: row ;
-    align-items: center ;
-    list-style-type: none ;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  list-style-type: none;
 
-    margin-top: 0.80rem ;
+  margin-top: 0.8rem;
 }
 .menu li {
-    padding: 1rem ;
-    padding-bottom: 0.5rem ;
+  padding: 1rem;
+  padding-bottom: 0.5rem;
 
-    font-family: arial, sans-serif ;
-    font-size: 1.35rem ;
-    margin-right: 2.75rem ;
-    letter-spacing: 0.07777rem;
-    font-weight: 650 ;
+  font-family: arial, sans-serif;
+  font-size: 1.35rem;
+  margin-right: 2.75rem;
+  letter-spacing: 0.07777rem;
+  font-weight: 650;
 }
 .menu li:hover {
-    border-bottom: rgba(255, 255, 255, 0.9777) 0.035rem solid ;
-    cursor: pointer ;
+  border-bottom: rgba(255, 255, 255, 0.9777) 0.035rem solid;
+  cursor: pointer;
 }
 
 .mobile_button {
-    display: none ;
+  display: none;
 }
 
-
-@media screen and (max-width: 1550px){
-    .menu li {
-        font-size: 1.1rem ;
-        margin-right: 0.75rem ;
-    }
-    .subNav {
-        font-size: 0.95rem ;
-        letter-spacing: 0.05rem ;
-    }
+@media screen and (max-width: 1550px) {
+  .menu li {
+    font-size: 1.1rem;
+    margin-right: 0.75rem;
+  }
+  .subNav {
+    font-size: 0.95rem;
+    letter-spacing: 0.05rem;
+  }
 }
 
-@media screen and (max-width: 1025px){
-    .navbar {
-        width: 100% ;
-        padding-right: 0rem ;
-        overflow-y: auto ;
-    }
-    .logo{
-        width: 20.67rem ;
-        height: 6.47rem ;
-        margin-left: 0.45rem ;
-        margin-right: 0.05rem ;
-    }
+@media screen and (max-width: 1025px) {
+  .navbar {
+    width: 100%;
+    padding-right: 0rem;
+    overflow-y: auto;
+  }
+  .logo {
+    width: 20.67rem;
+    height: 6.47rem;
+    margin-left: 0.45rem;
+    margin-right: 0.05rem;
+  }
+  .menu {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    left: -200%;
+    right: 0;
+    top: 7.47rem;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+    padding-top: 3.75rem;
+    padding-bottom: 3rem;
+
+    background-color: rgba(5, 10, 48, 1);
+    transition: left 0.3s;
+  }
+  .active {
+    left: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  .menu li {
+    margin-left: 0;
+    padding-left: 0rem;
+    padding-bottom: 2rem;
+    padding-top: 2rem;
+    margin-top: 0.25rem;
+
+    border-bottom: rgba(255, 255, 255, 0.4777) 0.025rem solid;
+    width: 60%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    font-size: 1.877rem;
+    font-weight: 600;
+  }
+
+  .mobile_button {
+    display: block;
+    position: absolute;
+    right: 1.5rem;
+    margin-top: 0.4rem;
+    cursor: pointer;
+  }
+
+  .subNav {
+    font-size: 0.92rem;
+    height: 1.85rem;
+  }
+
+  @media screen and (orientation: landscape) {
     .menu {
-        display: flex ;
-        flex-direction: column ;
-        position: fixed ;
-        left: -200%;
-        right: 0 ;
-        top: 7.47rem ;
-        bottom: 0 ;
-        width: 100% ;
-        height: auto ;
-        padding-top: 3.75rem ;
-        padding-bottom: 3rem ;
-
-        background-color: rgba(5, 10, 48, 1.0) ;
-        transition: left 0.3s ;
-    }.active{
-        left: 0 ;
-        overflow-y: auto ;
-        overflow-x: hidden ;
+      min-height: 65%;
     }
-    .menu li {
-        margin-left: 0 ;
-        padding-left: 0rem ;
-        padding-bottom: 2rem ;
-        padding-top: 2rem ;
-        margin-top: 0.25rem ;
-
-        border-bottom: rgba(255, 255, 255, 0.4777) 0.025rem solid ;
-        width: 60% ;
-        justify-content: center ;
-        align-items: center ;
-        text-align: center ;
-
-        font-size: 1.877rem ;
-        font-weight: 600 ;
-    }
-
-    .mobile_button {
-        display: block ;
-        position: absolute ;
-        right: 1.5rem ;
-        margin-top: 0.4rem ;
-        cursor: pointer ;
-    }
-
-    .subNav {
-        font-size: 0.92rem ;
-        height: 1.85rem ;
-    }
-
-    @media screen and (orientation: landscape){
-        .menu {
-            min-height: 65% ;
-        }
-    }
+  }
 }
 
-@media screen and (max-width: 769px){
-    .logo {
-        width: 19.77rem ;
-        height: 6.37rem ;
-        margin-left: 0.41rem ;
-    }
-    .menu{
-        padding-top: 5rem ;
-    }
-    .menu li {
-        width: 50% ;
-        font-size: 1.7rem ;
-        font-weight: 600 ;
-    }
-    .mobile_button {
-        right: 0.5rem ;
-        margin-bottom: -3.4rem ;
-    }
+@media screen and (max-width: 769px) {
+  .logo {
+    width: 19.77rem;
+    height: 6.37rem;
+    margin-left: 0.41rem;
+  }
+  .menu {
+    padding-top: 5rem;
+  }
+  .menu li {
+    width: 50%;
+    font-size: 1.7rem;
+    font-weight: 600;
+  }
+  .mobile_button {
+    right: 0.5rem;
+    margin-bottom: -3.4rem;
+  }
 
-    .subNav {
-        font-size: 0.77rem ;
-        height: 1.75rem ;
-        margin-right: 0rem ;
-        margin-left: 0rem ;
-        padding: 0rem ;
-    }
+  .subNav {
+    font-size: 0.77rem;
+    height: 1.75rem;
+    margin-right: 0rem;
+    margin-left: 0rem;
+    padding: 0rem;
+  }
 }
 
-@media screen and (max-width: 480px){
-    .logo {
-        width: 17.64rem ;
-        height: 5.977rem ;
+@media screen and (max-width: 480px) {
+  .logo {
+    width: 17.64rem;
+    height: 5.977rem;
 
-        margin-right: 0rem ;
-        margin-left: 0.25rem ;
-        margin-bottom: 0.25rem ;
-    }
-    .menu {
-        padding-top: 3rem ;
-    }
-    .menu li {
-        width: 70% ;
-        
-        font-size: 1.3rem ;
-        font-weight: 600 ;
+    margin-right: 0rem;
+    margin-left: 0.25rem;
+    margin-bottom: 0.25rem;
+  }
+  .menu {
+    padding-top: 3rem;
+  }
+  .menu li {
+    width: 70%;
 
-        padding-top: 1.7rem ;
-        padding-bottom: 1.7rem ;
-        margin-left: -0.45rem ;
-    }
+    font-size: 1.3rem;
+    font-weight: 600;
 
-    .subNav {
-        font-size: 0.8rem ;
-        height: 3rem ;
-    }
+    padding-top: 1.7rem;
+    padding-bottom: 1.7rem;
+    margin-left: -0.45rem;
+  }
+
+  .subNav {
+    font-size: 0.8rem;
+    height: 3rem;
+  }
 }
 
-@media screen and (max-width: 340px){
-    .logo {
-        width: 16.54rem ;
-        height: 5.977rem ;
+@media screen and (max-width: 340px) {
+  .logo {
+    width: 16.54rem;
+    height: 5.977rem;
 
-        margin-right: 0.15rem ;
-        margin-left: 0.15rem ;
-    }
-    .menu li {
-        width: 60% ;
-        padding-top: 1rem ;
-        padding-bottom: 1rem ;
-        
-        font-size: 1.2777rem ;
-        font-weight: 600 ;
-    }
+    margin-right: 0.15rem;
+    margin-left: 0.15rem;
+  }
+  .menu li {
+    width: 60%;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 
-    .mobile_button{
-        right: 0.3rem ;
-    }
+    font-size: 1.2777rem;
+    font-weight: 600;
+  }
 
-    .subNav {
-        height: 1.95rem ;
-    }
+  .mobile_button {
+    right: 0.3rem;
+  }
+
+  .subNav {
+    height: 1.95rem;
+  }
 }

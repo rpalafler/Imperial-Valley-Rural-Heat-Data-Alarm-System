@@ -178,7 +178,7 @@ function PullupTab() {
     <div className={styles.sectionContent}>
       <div
         className={
-          sensorContext.sensorTabOpen
+          sensorContext.sensorTabOpen && sensorData
             ? [styles.pulluptab, styles.active].join(" ")
             : styles.pulluptab
         }
@@ -186,9 +186,15 @@ function PullupTab() {
         <div style={{ display: "flex", flexDirection: "row" }}>
           {sensorContext.sensorPoint ? (
             <h3>
-              Sensor Data Time Series for (
-              {sensorContext.sensorPoint[0].toFixed(3)},{" "}
-              {sensorContext.sensorPoint[1].toFixed(3)})
+              Sensor Data Time Series for {"  "}
+              {sensorContext.sensorPoint
+                ? Math.abs(sensorContext.sensorPoint[1].toFixed(3))
+                : null}
+              °N,{" "}
+              {sensorContext.sensorPoint
+                ? Math.abs(sensorContext.sensorPoint[0].toFixed(3))
+                : null}
+              °W
             </h3>
           ) : null}
           <h2
@@ -201,7 +207,7 @@ function PullupTab() {
         </div>
         <h4 style={{ color: "rgb(0, 0, 150)" }}>
           Climate Variable:{" "}
-          {sensorContext.sensorPoint
+          {sensorContext.sensorPoint && sensorContext.sensorForm
             ? sensorContext.sensorForm.climateVar === "rh2m"
               ? "Relative Humidity (2-Meters)"
               : "Dewpoint Temperature (2-Meters)"
@@ -216,7 +222,17 @@ function PullupTab() {
             <div className={styles.spinner}>
               <Spinner animation="border" role="status" />
               {"  "}
-              <div className={styles.spinnerText}>Loading...</div>
+              <div className={styles.spinnerText}>
+                Loading Data for{" "}
+                {sensorContext.sensorPoint
+                  ? Math.abs(sensorContext.sensorPoint[1].toFixed(3))
+                  : null}
+                °N,{" "}
+                {sensorContext.sensorPoint
+                  ? Math.abs(sensorContext.sensorPoint[0].toFixed(3))
+                  : null}
+                °W
+              </div>
             </div>
           )}
         </div>
