@@ -29,6 +29,7 @@ import { ClimateDataContext } from "../../MainApp";
 import { RTMAContext } from "../../MainApp";
 import { SensorContext } from "../../MainApp";
 import { Basemap2DContext } from "../../MainApp";
+import { BasemapSelContext } from "../../MainApp";
 
 /* Visualize Gridded Datasets */
 import GL from "@luma.gl/constants";
@@ -90,6 +91,7 @@ function Env3D() {
   const sensorContext = useContext(SensorContext);
   const { useBasemapLayer2D } = useContext(Basemap2DContext);
 
+  const { selectedBasemap } = useContext(BasemapSelContext);
   const [basemapLayer, setBasemapLayer] = useState(null);
   const [originalView, setOriginalView] = useState({
     longitude: -115.79,
@@ -179,7 +181,7 @@ function Env3D() {
 
   const BaseLayer2D = new TileLayer({
     id: "BaseLayer",
-    data: "https://c.tile.openstreetmap.org/{z}/{x}/{y}.png",
+    data: selectedBasemap, // basemap url selected
     maxZoom: 19,
     minZoom: 0,
 

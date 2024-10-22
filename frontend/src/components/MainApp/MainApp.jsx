@@ -22,7 +22,8 @@ export const SidebarContext = createContext(); // Sidebar Context
 export const ClimateDataContext = createContext(); // Climate Data Selections
 export const RTMAContext = createContext(); // RTMA Data
 export const SensorContext = createContext(); // Sensor Data
-export const Basemap2DContext = createContext();
+export const Basemap2DContext = createContext(); // switch between 2d + 3d
+export const BasemapSelContext = createContext(); // change 2d basemap
 
 function MainApp() {
   // Across App Functionality States
@@ -64,6 +65,11 @@ function MainApp() {
   const toggleBasemap = () => {
     setUseBasemapLayer2D((prev) => !prev);
   };
+
+  // basemap select dropdown
+  const [selectedBasemap, setSelectedBasemap] = useState(
+    "https://c.tile.openstreetmap.org/{z}/{x}/{y}.png"
+  );
 
   return (
     <>
@@ -110,10 +116,14 @@ function MainApp() {
               <Basemap2DContext.Provider
                 value={{ useBasemapLayer2D, toggleBasemap }}
               >
-                <SubHeader />
-                <Sidebar />
-                <DeckInterface />
-                <PullupTab />
+                <BasemapSelContext.Provider
+                  value={{ selectedBasemap, setSelectedBasemap }}
+                >
+                  <SubHeader />
+                  <Sidebar />
+                  <DeckInterface />
+                  <PullupTab />
+                </BasemapSelContext.Provider>
               </Basemap2DContext.Provider>
             </SensorContext.Provider>
           </RTMAContext.Provider>
