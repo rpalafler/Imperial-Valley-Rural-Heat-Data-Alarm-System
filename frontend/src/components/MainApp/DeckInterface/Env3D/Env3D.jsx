@@ -56,11 +56,11 @@ function calculateBoundingBox(center, zoom) {
     latDistance = 30 * MILES_TO_DEGREES_LAT;
     lngDistance = 30 * MILES_TO_DEGREES_LNG;
   } else if (zoom < 10 && zoom >= 9) {
+    latDistance = 25 * MILES_TO_DEGREES_LAT;
+    lngDistance = 25 * MILES_TO_DEGREES_LNG;
+  } else if (zoom < 13 && zoom >= 10) {
     latDistance = 20 * MILES_TO_DEGREES_LAT;
     lngDistance = 20 * MILES_TO_DEGREES_LNG;
-  } else if (zoom < 13 && zoom >= 10) {
-    latDistance = 10 * MILES_TO_DEGREES_LAT;
-    lngDistance = 10 * MILES_TO_DEGREES_LNG;
   } else if (zoom < 13.5 && zoom >= 13) {
     latDistance = 5 * MILES_TO_DEGREES_LAT;
     lngDistance = 5 * MILES_TO_DEGREES_LNG;

@@ -157,7 +157,7 @@ function SensorData() {
   });
   const handleFormChange = () => {
     setForm({
-      ...form,
+      ...form, // We can change any variable, and keep the others the same
       year: year,
       month: month,
       day: day,
@@ -178,26 +178,33 @@ function SensorData() {
   useEffect(() => {
     const preparedForm = form;
     console.log(JSON.stringify(preparedForm));
+
     const sendSensorData = async () => {
       try {
         handleLoading(true);
         const response = await fetch(
           "http://localhost:5000/send_sensor_vis_request",
           {
-            method: "POST",
+            method: "POST", // POST declaration
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify(preparedForm),
+            body: JSON.stringify(preparedForm), // Send user variables as JSON to POST request
           }
         );
+
+        console.log("IS MY RESPONSE OK?", response.ok);
+
         if (!response.ok) {
           throw new Error(
             "ERROR: Request could not be processed. Reload & Try Again."
           );
         }
         handleLoading(true);
-        const responseData = await response.json();
+        const responseData = await response.json(); // Await (pause) execution until response is delivered
+
+        console.log("RESPONSE DATA", responseData);
+
         const rgbaImage = flatArrayToImageData(
           responseData["climate_var_image"],
           responseData["width"],
@@ -207,6 +214,7 @@ function SensorData() {
         responseData["climate_var_image"] = dataURL;
 
         sensorContext.setSensorData(responseData);
+
         console.log("I'm the data you saved:", responseData);
       } catch (error) {
         console.log("ERROR ", error);
@@ -281,7 +289,9 @@ function SensorData() {
             </Col>
             <Col>
               <Form.Group controlId={"hour-selection"}>
-                <Form.Label className={styles2.inputRowLabel}>Hour</Form.Label>
+                <Form.Label className={styles2.inputRowLabel}>
+                  Hour (UTC)
+                </Form.Label>
                 <Form.Control
                   type={"number"}
                   value={hour}

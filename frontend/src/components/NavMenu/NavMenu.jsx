@@ -62,7 +62,7 @@ const menuArray = [
   },
   {
     value: 2,
-    name: "Mission",
+    name: "Team",
     icon: (
       <MdOutlineConnectWithoutContact
         style={{
@@ -74,7 +74,7 @@ const menuArray = [
         }}
       />
     ),
-    url: "/mission",
+    url: "/team",
   },
   {
     value: 3,
@@ -119,7 +119,7 @@ export function NavMenu({ showDev }) {
       <header className={styles.navbar}>
         <NavLink to={menuArray[0].url}>
           <img
-            src="/imperial-valley-logo.png"
+            src="/RHI-rectangle-logo.png"
             alt="Imperial Valley Rural Heat Data and Alarm System"
             className={styles.logo}
           />
@@ -176,7 +176,7 @@ export function NavMenu({ showDev }) {
         <div>
           Developed by{" "}
           <a
-            href={"https://www.premier-analytics.com/"}
+            href={"https://www.premier-analytics.com/ryan-paul-lafler"}
             style={{
               textDecoration: "underline",
               color: "rgba(255, 255, 255, 1)",
